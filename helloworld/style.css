@@ -1,0 +1,12 @@
+li, p {
+    color: green;
+}
+#introduction_header {
+    border-color: darkred;
+    border-width: 2px;
+    border-style: solid;
+}
+
+.introduction_header {
+    font-family: "Arial Narrow", sans-serif;
+}
