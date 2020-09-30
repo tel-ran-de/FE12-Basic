@@ -1,0 +1,75 @@
+.knopka{
+    color: cornsilk;
+    background-color: rgb(49, 69, 82);
+    padding: 5px;
+
+    border-radius: 5px;
+    border: 2px solid #0c0c0c47 ;
+    box-shadow: 5px 5px rgba(0,0,0,0.5);
+    padding: 5px;
+    margin-top: 10px;
+}
+.knopka:hover{
+    background: grey;
+    box-shadow: 0 0 30px 5px rgba(0,0,0,0.5);
+    padding: 8px;
+    margin-top: 0;
+}
+
+img {
+    box-shadow: 0 0 30px 10px  rgba(0,0,0,0.5);
+    padding: 5px;
+}
+img:hover{
+
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    padding: 6px;
+
+}
+
+
+body {
+    font: 10pt Arial, Helvetica, sans-serif; /* Шрифт на веб-странице */
+
+    background: linear-gradient(45deg, transparent 50%, rgba(0,186,0,0.2) 50%, rgba(0,186,0,0.2)),
+    linear-gradient(-45deg, rgba(0,186,0,0.2) 50%, transparent 50%, transparent);
+
+    /* background: #e1dfb9; /* Цвет фона*/*/
+}
+h2 {
+    font-size: 1.1em; /* Размер шрифта */
+    color: #670536; /* Цвет текста */
+    margin-top: 0; /* Отступ сверху */
+}
+#container {
+    width: 800px; /* Ширина слоя */
+    margin: 0 auto; /* Выравнивание по центру */
+    background: #7eb5cf; /* Цвет фона левой колонки */
+}
+#header {
+    font-size: 2.2em; /* Размер текста */
+    text-align: center; /* Выравнивание по центру */
+    padding: 5px; /* Отступы вокруг текста */
+    background: #8fa09b; /* Цвет фона шапки */
+    color: #ffe; /* Цвет текста */
+}
+#sidebar {
+    margin-top: 10px;
+    width: 210px; /* Ширина слоя */
+    padding: 0 10px; /* Отступы вокруг текста */
+    float: left; /* Обтекание по правому краю */
+}
+#content {
+    margin-left: 230px; /* Отступ слева */
+    padding: 30px; /* Поля вокруг текста */
+    background: #e2cb85; ; /* Цвет фона правой колонки */
+}
+#footer {
+
+    margin: 0 auto;
+    font-size: 1.2em;
+    color: #fff; /* Цвет текста */
+    padding: 15px; /* Отступы вокруг текста */
+    clear: right ; /* Отменяем действие float */
+    background: #173c17; /* Цвет фона подвала */
+}
