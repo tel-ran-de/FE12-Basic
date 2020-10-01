@@ -1,0 +1,20 @@
+.cv-img {
+    margin: 5px;
+    width: 150px;
+}
+
+.header {
+
+}
+
+contact {
+    font-weight: bold;
+}
+
+.progress-bar.my-bar {
+    background-color: #1e7e34;
+}
+
+.progress.my-progress{
+    height: 0.5rem;
+}
