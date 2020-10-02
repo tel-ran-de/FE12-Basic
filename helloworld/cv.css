@@ -1,0 +1,12 @@
+header span {
+    font-weight: bold;
+}
+
+header {
+    background-color: lightgrey;
+}
+
+header img {
+    max-width: 200px;
+    border: 2px black solid;
+}
