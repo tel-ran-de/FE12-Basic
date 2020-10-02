@@ -1,0 +1,75 @@
+.header {
+    text-align: left;
+    font-family: "Calibri", serif;
+}
+
+.header {
+    margin-top: 0;
+    width: 90%;
+    height: 250px;
+    background-color: yellowgreen;
+    border-bottom: 4px #5f7e1f solid;
+    font-size: x-large;
+}
+
+.picture1 {
+    margin-top: 0;
+    display: block;
+    width: 10%;
+    height: 250px;
+    background-color: yellowgreen;
+    border-bottom: 4px #5f7e1f solid;
+}
+
+h2 {
+    padding: 0 20px;
+    text-decoration-line: overline;
+    font-family: "Calibri", serif;
+    font-size: x-large;
+    color: darkred;
+}
+
+ul, p, ol, em, a {
+    font-family: "Calibri", serif;
+    font-size: large;
+}
+
+#pic2 {
+    margin: 0;
+}
+
+body {
+    background-color: cornsilk;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.column, .header, .picture1 {
+    float: left;
+    padding: 10px;
+}
+
+.left, .middle {
+    width: 40%;
+}
+
+.right {
+    width: 20%;
+}
+
+.picture3 {
+    width: 20%;
+}
+
+.film {
+    width: 40%;
+    font-family: "Calibri", serif;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
