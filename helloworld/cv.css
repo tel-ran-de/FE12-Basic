@@ -10,3 +10,17 @@ header img {
     max-width: 200px;
     border: 2px black solid;
 }
+
+header h1, h4 {
+    text-transform: uppercase;
+}
+
+header div.row div {
+    border-left: 1px black solid
+}
+
+header div.row div:last-of-type, header div.row div:first-of-type {
+    border-left: none;
+}
+
+
