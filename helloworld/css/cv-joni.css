@@ -1,0 +1,121 @@
+
+
+.crfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+.crfix { display: inline-block; }
+
+* html .clearfix { height: 1%; }
+.crfix { display: block; }
+
+header span {
+
+    font-weight: bold;
+
+}
+
+
+
+header {
+    background-color: lightgrey;
+
+}
+
+header img {
+    max-width: 200px;
+    border: 2px black solid;
+}
+header div.row div img{
+    max-width: 17px;
+   margin: 6px;
+
+}
+
+header h1, h4 {
+    text-transform: uppercase;
+}
+
+header div.row  dd {
+    border-left: 1px black solid;
+    margin: 1px;
+
+}
+
+header div.row div:last-of-type, header div.row div:first-of-type {
+    border-left: none;
+}
+
+main h1{
+    text-transform: uppercase;
+}
+Wraper {
+    float: left;
+}
+
+
+
+Wraper div div img{
+    max-width:35px;
+    margin: 20px;
+
+
+}
+Wraper div.row  dd   {
+    border-left: 1px black solid;
+
+}
+.inner-content-1{
+
+    width: 35%;
+    float: left;
+    border-right: 1px black solid;
+}
+.inner-content-1 h1 , h2{
+    text-transform: uppercase;
+    font-size: 1.5em;
+
+}
+.inner-content-1 progress{
+    padding-bottom: 10px;
+
+}
+.inner-content-2{
+
+    width: 64%;
+    float: left;
+    padding: 10px;
+}
+.inner-content-2 h1{
+    text-transform: uppercase;
+    font-size: 1.5em;
+}
+.inner-content-2 h6{
+   font-weight: bold;
+}
+
+
+
+
+Wraper span {
+    font-weight: bold;
+
+}
+Wraper coni h6{
+    text-transform: uppercase;
+}
+Wraper coni{
+    float: left;
+}
+Wraper coni1 h6{
+    text-transform: uppercase;
+}
+footer{
+  height: 90px;
+    box-shadow:  5px 5px rgba(0,0,0,0.5);
+    margin-left: 10px;
+}

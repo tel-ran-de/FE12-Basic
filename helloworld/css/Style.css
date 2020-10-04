@@ -18,7 +18,8 @@
 
 img {
     box-shadow: 0 0 30px 10px  rgba(0,0,0,0.5);
-    padding: 5px;
+    padding: 2px;
+    margin: 10px;
 }
 img:hover{
 
@@ -67,9 +68,9 @@ h2 {
 #footer {
 
     margin: 0 auto;
-    font-size: 1.2em;
+    font-size: 1em;
     color: #fff; /* Цвет текста */
-    padding: 15px; /* Отступы вокруг текста */
+    padding: 5px; /* Отступы вокруг текста */
     clear: right ; /* Отменяем действие float */
     background: #173c17; /* Цвет фона подвала */
 }
