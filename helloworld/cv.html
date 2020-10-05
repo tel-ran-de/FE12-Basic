@@ -5,27 +5,34 @@
     <title>CV of John Doe</title>
     <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" href="cv.css">
+    <script src="https://kit.fontawesome.com/104989e41c.js" crossorigin="anonymous"></script>
 </head>
 <body class="container">
 <header class="row">
     <div class="col-lg-3">
         <img src="https://cdn2.iconfinder.com/data/icons/rcons-users-color/32/waiter-512.png" alt="photo">
     </div>
-    <div class="col-lg-9">
-        <h1>Jonathan Doe</h1>
+    <div class="col-md-9">
+        <h1 class="title-mt-15">Jonathan Doe</h1>
         <h4>Web developer</h4>
-        <div class="row">
-            <div class="col-lg-4 text-nowrap"><span>Phone:</span> (123) 1235 1234</div>
-            <div class="col-lg-4 text-nowrap"><span>Email:</span> jonathandoe@gmail.com</div>
-            <div class="col-lg-4 text-nowrap"><span>Web:</span> www.jonathandoe.com</div>
-            <div class="col-lg-12"><span>Adress:</span> 1234 Street Name, State name, Country, Zip code</div>
+        <div class="row ml-0">
+            <div class="row ml-0">
+                <div class="text-nowrap mr-1"><span>Phone:</span> (123) 1235 1234</div>
+                <div class="text-nowrap mr-1 pl-1"><span>Email:</span> jonathandoe@gmail.com</div>
+                <div class="text-nowrap mr-1 pl-1"><span>Web:</span> www.jonathandoe.com</div>
+            </div>
+<!--            отдельно добавить для адреса еще row ml - margin left-->
+            <di class="row ml-0">
+                <div class=""><span>Adress:</span> 1234 Street Name, State name, Country, Zip code</div>
+            </di>
         </div>
-        <div>
-            <div>Social connect:</div>
-            <div><img>jonathandoe.com</div>
-            <div><img>jonathandoe.com</div>
-            <div><img>jonathandoe.com</div>
-            <div><img>jonathandoe.com</div>
+        <!--            отдельно добавить для адреса еще row mt - margin top добавляен для визуального разделения-->
+        <div class="row mylinks ml-0 mt-2">
+            <div class="text-nowrap"><span>Social connect:</span></div>
+            <div class="item text-nowrap"><i class="fab fa-twitter-square"></i> <a href="https://twitter.com">jonathandoe.com</a></div>
+            <div class="item text-nowrap"><i class="fab fa-facebook-square"></i> <a href="https://twitter.com">jonathandoe.com</a></div>
+            <div class="item text-nowrap"><i class="fab fa-linkedin"></i> <a href="https://twitter.com">jonathandoe.com</a></div>
+            <div class="item text-nowrap"><i class="fab fa-google-plus"></i> <a href="https://twitter.com">jonathandoe.com</a></div>
         </div>
     </div>
 </header>

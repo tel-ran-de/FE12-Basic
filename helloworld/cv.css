@@ -5,9 +5,12 @@ header span {
 header {
     background-color: lightgrey;
 }
-
+header .title-mt-15 {
+    margin-top: 15px;
+}
 header img {
     max-width: 200px;
+    margin: 25px;
     border: 2px black solid;
 }
 
@@ -16,11 +19,17 @@ header h1, h4 {
 }
 
 header div.row div {
-    border-left: 1px black solid
+    border-left: 1px black solid;
 }
 
-header div.row div:last-of-type, header div.row div:first-of-type {
+header div.row div:first-of-type {/*убирает лишний border-left*/
     border-left: none;
 }
-
-
+header .row.mylinks div {
+    border-left: none;
+    margin: 0 5px 0 5px;
+}
+/*убирает лишний пробел перед Social connect:*/
+header .row.mylinks div:first-of-type {
+    margin-left: 0;
+}
