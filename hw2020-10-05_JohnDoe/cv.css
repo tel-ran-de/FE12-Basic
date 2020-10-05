@@ -1,0 +1,143 @@
+header span {
+    font-weight: bold;
+}
+
+header {
+    background-color: lightgrey;
+}
+
+header #foto {
+    width: 200px;
+    margin: 20px 20px;
+    padding: 5px 5px;
+    border: 2px black solid;
+}
+
+header h1 {
+    text-transform: uppercase;
+    font-family: Rockwell, serif;
+    font-weight: bold;
+    padding-top: 20px;
+}
+
+.web {
+    text-transform: uppercase;
+    font-family: Calibri, serif;
+}
+
+.line {
+    border-left: 1px solid black;
+}
+
+.about{
+    padding: 30px 10px 10px 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: Rockwell, serif;
+}
+
+.about-text{
+    font-size: small;
+    padding: 0 10px 10px 10px;
+}
+
+.column{
+    float: left;
+}
+
+.left{
+    width: 30%;
+}
+
+.right{
+    width: 70%;
+    padding-left: 10px;
+}
+.about2{
+    padding: 0 10px 10px 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: Rockwell, serif;
+}
+
+.line2{
+    border-left: #b1b3b3 3px solid;
+}
+
+.date{
+    text-transform: uppercase;
+    font-family: Calibri, serif;
+    padding-left: 10px;
+}
+
+.about3{
+    font-weight: bold;
+    font-family: Calibri, serif;
+    padding: 0 10px 0 10px;
+}
+
+.progress1 {
+    padding-left: 10px;
+    width: 90%;
+    background-color: #b1b3b3;
+}
+
+.bar1 {
+    padding-left: 10px;
+    width: 85%;
+    height: 5px;
+    background-color: black;
+}
+
+.progress2 {
+    padding-left: 10px;
+    width: 90%;
+    background-color: #b1b3b3;
+}
+
+.bar2 {
+    padding-left: 10px;
+    width: 95%;
+    height: 5px;
+    background-color: black;
+}
+
+.progress3 {
+    padding-left: 10px;
+    width: 90%;
+    background-color: #b1b3b3;
+}
+
+.bar3 {
+    padding-left: 10px;
+    width: 80%;
+    height: 5px;
+    background-color: black;
+}
+
+.progress4 {
+    padding-left: 10px;
+    width: 90%;
+    background-color: #b1b3b3;
+}
+
+.bar4 {
+    padding-left: 10px;
+    width: 87%;
+    height: 5px;
+    background-color: black;
+}
+
+.progress5 {
+    padding-left: 10px;
+    width: 90%;
+    background-color: #b1b3b3;
+}
+
+.bar5 {
+    padding-left: 10px;
+    width: 90%;
+    height: 5px;
+    background-color: black;
+}
+
