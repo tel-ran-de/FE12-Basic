@@ -8,19 +8,22 @@ header {
 
 header img {
     max-width: 200px;
+    margin: 20px 20px;
+    padding: 5px 5px;
     border: 2px black solid;
 }
-
 header h1, h4 {
     text-transform: uppercase;
+
 }
 
-header div.row div {
-    border-left: 1px black solid
+.aboutMe{
+    padding: 30px 10px 10px 10px;
+    font-family: Rockwell, serif;
 }
-
-header div.row div:last-of-type, header div.row div:first-of-type {
-    border-left: none;
+.column{
+    float: right;
 }
-
-
+.col{
+   
+}
