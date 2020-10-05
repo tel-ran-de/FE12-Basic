@@ -52,8 +52,12 @@ main {
     margin-top: 20px;
 }
 
-main span {
+span.oblique {
     font-style: oblique;
+}
+
+span.bold {
+    font-weight: bold;
 }
 
 div.captions {
@@ -75,9 +79,9 @@ main img {
 
 div.skills-progress {
     padding-bottom: 5px;
-    padding-top: 5px;
+    padding-top: 7px;
     padding-right: 5px;
-    margin: 5px;
+    margin: 6px;
 }
 
 skills {
