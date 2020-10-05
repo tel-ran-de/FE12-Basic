@@ -1,0 +1,26 @@
+head span {
+    font-weight: bold;
+}
+
+header {
+    background-color: lightgrey;
+}
+
+header h1, h4 {
+    text-transform: uppercase;
+}
+
+header img {
+    max-width: 200px;
+    border: 2px black solid;
+}
+
+header div.row div {
+    border-left: 1px black solid;
+    min-width: 70px;
+}
+
+
+header div.row div last-of-type, div first-of-type {
+    border-left: none;
+}

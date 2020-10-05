@@ -1,0 +1,86 @@
+header.row, main.row {
+    padding: 25px;
+}
+
+header span {
+    font-weight: bold;
+    font-size: medium;
+}
+
+header {
+    background-color: #bbbab9;
+    font-size: small;
+}
+
+header img {
+    max-width: 200px;
+    border: 2px black solid;
+}
+
+header h1, h4, h6 {
+    text-transform: uppercase;
+    font-family: "Bodoni MT Black";
+}
+
+header h5 {
+    font-weight: lighter;
+    text-transform: uppercase;
+    font-family: Verdana, sans-serif;
+}
+
+h6 {
+    font-weight: lighter;
+}
+
+.separator {
+    border-left: 1px black solid;
+    padding-left: 25px;
+}
+
+.social_connect {
+    margin-left: 0px;
+    margin-top: 15px;
+}
+
+main {
+    background-color: #ebe9e7;
+    font-size: small;
+}
+
+.text-body {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+main span {
+    font-style: oblique;
+}
+
+div.captions {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+div.time_line{
+    padding-bottom: 3px;
+}
+
+main img {
+    max-width: 25px;
+}
+
+.awards{
+    margin-left: 5px;
+}
+
+div.skills-progress {
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-right: 5px;
+    margin: 5px;
+}
+
+skills {
+    font-weight: bold;
+    padding-left: 2px;
+}
