@@ -1,7 +1,17 @@
-console.log('bubble sort:');
-let array = [32, 43, 5, -3, 54, 452, 0];
+let array = createArray();
 
-function bubbleSort(array) {
+function createArray(){
+    let arr = [];
+    for (let i = 0; i < 10; i++){
+        arr.push(prompt("Please, enter one number"));
+}
+    return arr;
+}
+
+console.log('Unsorted array is: ' + array);
+console.log('Your array after bubble sort:');
+
+function bubbleSort() {
     let tempNumber = 0;
 
     for (let i = 0; i < array.length; i++) {
