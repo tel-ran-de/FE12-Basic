@@ -1,6 +1,9 @@
 console.log("Not sorted array:")
-console.log(41, 9, 7, 144, 3, 11, 62, 79, 1, -6, 12);
-let arr = [41, 9, 7, 144, 3, 11, 62, 79, 1, -6, 12];
+let arr = [];
+for (let i = 0; i < 10; i++) {
+    arr[i] = prompt("Please enter number");
+    console.log(arr[i]);
+}
 unsorted = true;
 while (unsorted) {
     unsorted = false;
