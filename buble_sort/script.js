@@ -10,6 +10,7 @@ console.log('Not sorted array: ' + inputArray);
 
 const outputArray = bubbleSort(inputArray);
 console.log('Sorted array: ' + outputArray);
+console.log('Input array: ' + inputArray);
 
 function bubbleSort(arr) {
     let unsorted = true;
