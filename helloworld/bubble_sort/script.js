@@ -1,16 +1,16 @@
-let unsortedArray = Array.from({
+const unsortedArray = Array.from({
     length: +prompt('Please enter the size of your array')
 },num => +prompt(('Please enter some number ')));
-console.log(unsortedArray);
+console.log("Unsorted arr "+ unsortedArray);
 
 
 function bubbleSort(arr) {
-    for (let n = 0; n < unsortedArray.length; n++) {
-        for (let i = 0; i < unsortedArray.length - 1 - n; i++) {
-            if (unsortedArray[i] > unsortedArray[i + 1]) {
-                let temp = unsortedArray[i];
-                unsortedArray[i] = unsortedArray[i + 1];
-                unsortedArray[i + 1] = temp;
+    for (let n = 0; n < arr.length; n++) {
+        for (let i = 0; i < arr.length - 1 - n; i++) {
+            if (arr[i] > arr[i + 1]) {
+                let temp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = temp;
             }
         }
     }
