@@ -1,14 +1,13 @@
 let text = "Отец мой Андрей Петрович Гринев в молодости своей служил при графе Минихе и вышел в отставку премьер-майором в 17.. году. С тех пор жил он в своей Симбирской деревне, где и женился на девице Авдотье Васильевне Ю., дочери бедного тамошнего дворянина. Нас было девять человек детей. Все мои братья и сестры умерли во младенчестве."
 
-let frequency = {
-}
+let frequency = {};
 
 let data = text.split(/[ ,.]+/);
 console.log(data);
 
 //add word in Object
-function frequencyFunction() {
-    for (const word of data) {
+function frequencyFunction(text) {
+    for (const word of text) {
         if (frequency[word]) {
             frequency[word] += 1;
         } else
@@ -16,9 +15,9 @@ function frequencyFunction() {
     }
 }
 
-frequencyFunction();
+frequencyFunction(data);
 
-// copy Object
+// copy Object for sorting
 let byFrequency = Object.assign(frequency);
 
 //сортирует, только выводит само слово, без количества вхождений
