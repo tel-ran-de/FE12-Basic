@@ -6,32 +6,29 @@ for (let i = 0; i < n; i++) {
     inputArray[i] = +prompt('Please enter a number');
     console.log(inputArray[i]);
 }
+console.log('Sorted array: ' + bubbleSort(getCopyInputArray(inputArray)));
 console.log('Not sorted array: ' + inputArray);
 
-const outputArray = bubbleSort(inputArray);
-console.log('Sorted array: ' + outputArray);
-console.log('Input array: ' + sortCopy(inputArray));
+ function getCopyInputArray(array1) {
+ const numbersCopy = [];
+    for (i = 0; i < array1.length; i++) {
+    numbersCopy[i] = array1[i];
+ }
+    return numbersCopy;
+  }
 
- function sortCopy(arr) {
-      return arr.slice(0).sort();  //The slice(0) expression creates a copy of the array starting at element 0.
-    }
-
-function bubbleSort() {
-
+function bubbleSort(array) {
     let unsorted = true;
     while (unsorted) {
         unsorted = false;
-        for (let i = 0; i < inputArray.length; i++) {
-            if (inputArray[i] > inputArray[i + 1]) {
-                let temp = inputArray[i];
-                inputArray[i] = inputArray[i + 1];
-                inputArray[i + 1] = temp;
+        for (let i = 0; i < array.length; i++) {
+            if (array[i] > array[i + 1]) {
+                let temp = array[i];
+                array[i] = array[i + 1];
+                array[i + 1] = temp;
                 unsorted = true;
             }
         }
     }
-
-
-
-
+    return array
 }
