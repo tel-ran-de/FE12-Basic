@@ -12,7 +12,8 @@ const outputArray = bubbleSort(inputArray);
 console.log('Sorted array: ' + outputArray);
 console.log('Input array: ' + inputArray);
 
-function bubbleSort(arr) {
+function bubbleSort(inArray) {
+    const arr = [...inArray];
     let unsorted = true;
     while (unsorted) {
         unsorted = false;
