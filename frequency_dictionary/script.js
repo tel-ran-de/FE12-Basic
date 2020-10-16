@@ -20,6 +20,5 @@ function getWordFrequency() {
         }
     }
 }
-
 getWordFrequency();
 console.log(frequency);
