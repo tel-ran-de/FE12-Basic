@@ -17,7 +17,7 @@ const text = "Отец мой Андрей Петрович Гринев в мо
     "С тех пор жил он в своей Симбирской деревне, где и женился на девице Авдотье Васильевне Ю., дочери бедного тамошнего дворянина." +
     "Нас было девять человек детей. Все мои братья и сестры умерли во младенчестве."
 
-let words = text.split(/[ ,.;:-]+/);
+let words = text.split(/[ ,.;:-]+/).filter(function(el) {return el.length !== 0});
 
 function getWordsToTheObject(text) {
     for (let i = 0; i < words.length; i++) {
