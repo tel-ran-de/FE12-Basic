@@ -23,7 +23,7 @@ function countFrequencyOfUsingWords(array){
             reader[array[i]] = 1;
         }
     }
-    return reader;
+   return reader;
 }
 
 let arrayFromString = makeArrayFromString(str);
