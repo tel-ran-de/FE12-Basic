@@ -1,10 +1,7 @@
 function frequencyDictionary(str) {
     const dictionary = {};
 
-    const wordsArray = str.split(/[\s.,?:!;\-"]+/)
-        .filter(function(el) {
-            return el.length !== 0
-        });
+    const wordsArray = wordsStringToArray(str);
 
     console.log(wordsArray);
 
@@ -18,21 +15,28 @@ function frequencyDictionary(str) {
     return dictionary;
 }
 
+function wordsStringToArray(str) {
+    return str.split(/[\s.,?:!;\-"]+/)
+        .filter(function(el) {
+            return el.length !== 0
+        });
+}
+
 function onButtonClick() {
     const text = document.getElementById('textForAnalysis').value;
     if (text === '') {
-        document.querySelector('textarea#textForAnalysis + div.invalid-feedback').style.display = 'block';
-        /*
-        Or you can use this selector
-        document.getElementsByClassName('invalid-feedback')[0].style.display = 'block';
-         */
+        document.querySelector('.input-group div.invalid-feedback.empty').style.display = 'block';
+        return;
+    }
+    if (wordsStringToArray(text).length < 2 ) {
+        document.querySelector('.input-group div.invalid-feedback.minvalue').style.display = 'block';
         return;
     }
     console.log(frequencyDictionary(text));
 }
 
 function handleOnFocus() {
-    document.querySelector('textarea#textForAnalysis + div.invalid-feedback').style.display = 'none';
+    for (const element of document.querySelectorAll('.input-group div.invalid-feedback')) {
+        element.style.display = 'none';
+    }
 }
-
-//console.log(frequencyDictionary(''));
