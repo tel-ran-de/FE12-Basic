@@ -8,17 +8,20 @@
     <script src="script.js"></script>
 </head>
 <body class="container">
-    <h1>Frequency dictionary calculator</h1>
-    <div class="input-group">
-        <div class="input-group-prepend">
-            <span class="input-group-text">Please type your text here</span>
-        </div>
-        <textarea id="textForAnalysis" class="form-control" aria-label="With textarea" onfocus="handleOnFocus()"></textarea>
-        <div class="invalid-feedback">
-            Text is empty - please type text here
-        </div>
+<h1>Frequency dictionary calculator</h1>
+<div class="input-group">
+    <div class="input-group-prepend">
+        <span class="input-group-text">Please type your text here</span>
     </div>
+    <textarea id="textForAnalysis" class="form-control" aria-label="With textarea" oninput="startTyping()"></textarea>
+    <div id="nullInput" class="invalid-feedback">
+        Text is empty - please type text here
+    </div>
+    <div id="less2words" class="invalid-feedback">
+        Text is too short - please type text more than one word
+    </div>
+</div>
 
-    <button type="button" class="btn btn-primary" onclick="onButtonClick()">Click to analyse</button>
+<button type="button" class="btn btn-primary" onclick="onButtonClick()">Click to analyse</button>
 </body>
 </html>
