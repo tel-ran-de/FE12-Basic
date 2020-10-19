@@ -13,8 +13,11 @@
         <div class="input-group-prepend">
             <span class="input-group-text">Please type your text here</span>
         </div>
-        <textarea id="textForAnalysis" class="form-control" aria-label="With textarea" onfocus="handleOnFocus()"></textarea>
-        <div class="invalid-feedback">
+        <textarea id="textForAnalysis" class="form-control" aria-label="With textarea" oninput="handleOnFocus()"></textarea>
+        <div class="invalid-feedback empty">
+            Text is empty - please type text here.
+        </div>
+        <div class="invalid-feedback minvalue">
             Text is empty - please type text here
         </div>
     </div>
