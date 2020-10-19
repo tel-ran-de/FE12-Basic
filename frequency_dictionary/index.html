@@ -13,12 +13,11 @@
         <div class="input-group-prepend">
             <span class="input-group-text">Please type your text here</span>
         </div>
-        <textarea id="textForAnalysis" class="form-control" aria-label="With textarea" onfocus="handleOnFocus()"></textarea>
+        <textarea id="textForAnalysis" class="form-control" aria-label="With textarea" oninput="onInputHandler()"></textarea>
         <div class="invalid-feedback">
             Text is empty - please type text here
         </div>
     </div>
-
     <button type="button" class="btn btn-primary" onclick="onButtonClick()">Click to analyse</button>
 </body>
 </html>
