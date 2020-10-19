@@ -1,38 +1,18 @@
-function frequencyDictionary(str) {
-    const dictionary = {};
-
-    const wordsArray = str.split(/[\s.,?:!;\-"]+/)
-        .filter(function(el) {
-            return el.length !== 0
-        });
-
-    console.log(wordsArray);
-
-    for (let i = 0; i < wordsArray.length; i++) {
-        if (dictionary[wordsArray[i]]) {
-            dictionary[wordsArray[i]]++;
-        } else {
-            dictionary[wordsArray[i]] = 1;
-        }
-    }
-    return dictionary;
-}
-
 function onButtonClick() {
     const text = document.getElementById('textForAnalysis').value;
+    let quantityWords = (document.getElementById('textForAnalysis').value).split(/[\s.,?:!;\-"]+/).length
+    console.log(quantityWords);
+
     if (text === '') {
         document.querySelector('textarea#textForAnalysis + div.invalid-feedback').style.display = 'block';
-        /*
-        Or you can use this selector
-        document.getElementsByClassName('invalid-feedback')[0].style.display = 'block';
-         */
-        return;
     }
-    console.log(frequencyDictionary(text));
+    if (text !== '' && quantityWords < 2) {
+        document.getElementById('inputError').innerHTML = 'Please type more than 1 word !!!';
+    }else{
+        document.getElementById('inputError').innerHTML = '';
+    }
 }
 
 function handleOnFocus() {
-    document.querySelector('textarea#textForAnalysis + div.invalid-feedback').style.display = 'none';
-}
-
-//console.log(frequencyDictionary(''));
+        document.querySelector('textarea#textForAnalysis + div.invalid-feedback').style.display = 'none';
+    }
