@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Frequency dictionary</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body class="container">
+<h1>Frequency dictionary calculator</h1>
+<div class="input-group">
+    <div class="input-group-prepend">
+        <span class="input-group-text">Please type your text here</span>
+    </div>
+    <textarea id="textForAnalysis" class="form-control" aria-label="With textarea" onfocus="handleOnFocus()"></textarea>
+    <div class="invalid-feedback">
+        Text is empty - please type text here
+    </div>
+</div>
+
+<button type="button" class="btn btn-primary" onclick="onButtonClick()">Click to analyse</button>
+</body>
+</html>
