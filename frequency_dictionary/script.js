@@ -43,8 +43,10 @@ function handleOnFocus() {
 
 function insertIntoTable(wordsObject) {
     const element = document.querySelector('table.table tbody');
-    /* <tr><th scope="row">1</th><td>this</td><td>20</td></tr> */
+    let line = '';
+    let i = 1;
     for (const word in wordsObject) {
-        console.log(word, wordsObject[word]);
+        line += `<tr><th scope="row">${i++}</th><td>${word}</td><td>${wordsObject[word]}</td></tr>`;
     }
+    element.innerHTML = line;
 }
