@@ -2,6 +2,13 @@ button {
     margin-top: 1em;
 }
 
+<<<<<<< HEAD
+=======
+table.table {
+    margin-top: 2em;
+}
+
+>>>>>>> upstream/master
 /*.invalid-feedback {*/
 /*    display: block;*/
 /*}*/
