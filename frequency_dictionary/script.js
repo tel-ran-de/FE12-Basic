@@ -13,7 +13,8 @@ function makeArrayFromString(string){
     return tempArray;
 }
 
-function countFrequencyOfUsingWords(array){
+function countFrequencyOfUsingWords(string){
+    let array = makeArrayFromString(string);
     let reader = {};
     for (let i = 0; i < array.length; i++) {
         if (reader[array[i]] != null){
@@ -26,8 +27,5 @@ function countFrequencyOfUsingWords(array){
    return reader;
 }
 
-let arrayFromString = makeArrayFromString(str);
-let newTextReader = countFrequencyOfUsingWords(arrayFromString);
-
-console.log(arrayFromString);
+let newTextReader = countFrequencyOfUsingWords(str);
 console.log(newTextReader);
