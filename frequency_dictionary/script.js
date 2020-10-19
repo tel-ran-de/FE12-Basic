@@ -32,11 +32,19 @@ function onButtonClick() {
         document.querySelector('.input-group div.invalid-feedback.minvalue').style.display = 'block';
         return;
     }
-    console.log(frequencyDictionary(text));
+    insertIntoTable(frequencyDictionary(text));
 }
 
 function handleOnFocus() {
     for (const element of document.querySelectorAll('.input-group div.invalid-feedback')) {
         element.style.display = 'none';
+    }
+}
+
+function insertIntoTable(wordsObject) {
+    const element = document.querySelector('table.table tbody');
+    /* <tr><th scope="row">1</th><td>this</td><td>20</td></tr> */
+    for (const word in wordsObject) {
+        console.log(word, wordsObject[word]);
     }
 }

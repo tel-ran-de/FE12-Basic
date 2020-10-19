@@ -2,6 +2,10 @@ button {
     margin-top: 1em;
 }
 
+table.table {
+    margin-top: 2em;
+}
+
 /*.invalid-feedback {*/
 /*    display: block;*/
 /*}*/
