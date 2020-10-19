@@ -13,9 +13,12 @@
     <div class="input-group-prepend">
         <span class="input-group-text">Please type your text here</span>
     </div>
-    <textarea id="textForAnalysis" class="form-control" aria-label="With textarea" onfocus="handleOnFocus()"></textarea>
+    <textarea id="textForAnalysis" class="form-control" aria-label="With textarea" oninput="handleOnInput()"></textarea>
     <div class="invalid-feedback">
         Text is empty - please type text here
+    </div>
+    <div class="invalid-feedback">
+        Text includes less then 1 word
     </div>
 </div>
 

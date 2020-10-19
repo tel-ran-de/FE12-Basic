@@ -2,7 +2,13 @@ function frequencyDictionary(str) {
     const dictionary = {};
 
     const wordsArray = str.split(/[\s.,?:!;\-"]+/)
-        .filter(function(el) {
+    if (wordsArray.length==1){
+        document.getElementsByClassName('invalid-feedback')[1].style.display = 'block';
+
+        return;
+    }
+
+        wordsArray.filter(function(el) {
             return el.length !== 0
         });
 
@@ -21,18 +27,16 @@ function frequencyDictionary(str) {
 function onButtonClick() {
     const text = document.getElementById('textForAnalysis').value;
     if (text === '') {
-        document.querySelector('textarea#textForAnalysis + div.invalid-feedback').style.display = 'block';
-        /*
-        Or you can use this selector
         document.getElementsByClassName('invalid-feedback')[0].style.display = 'block';
-         */
+
         return;
     }
     console.log(frequencyDictionary(text));
 }
 
-function handleOnFocus() {
-    document.querySelector('textarea#textForAnalysis + div.invalid-feedback').style.display = 'none';
+function handleOnInput() {
+    document.getElementsByClassName('invalid-feedback')[0].style.display = 'none';
+    document.getElementsByClassName('invalid-feedback')[1].style.display = 'none';
 }
 
 //console.log(frequencyDictionary(''));
