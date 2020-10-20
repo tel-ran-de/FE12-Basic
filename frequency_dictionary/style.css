@@ -5,6 +5,52 @@ button {
 table.table {
     margin-top: 2em;
 }
+.tbutton button{
+    border-radius: 4px;
+    margin-top: 1em;
+    margin-left: 10px;
+    box-shadow: 3px 3px rgba(0,0,0,0.5);
+}
+.tbutton button:hover {
+    margin-top: 1em;
+    background: grey;
+    box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.1);
+
+}
+
+.tbutton .btn-btn-primary{
+    background: #0a0ae0;
+    color: #fff;
+    margin-right: auto;
+    padding: 10px;
+}
+
+.input-wrapper {
+    display: grid;
+    position: relative;
+    z-index: 1;
+    top: -5px;
+    left: 1%;
+
+}
+.input-wrapper:hover:after {
+    content: attr(data-title);
+    border-radius: 4px;
+    color: #fff;
+    position: absolute;
+    /*position: absolute;*/
+    left: 50%; top: -80%;
+    z-index: 1;
+    background: black;
+    font-size: 11px;
+    padding: 5px 10px;
+    border: 1px solid #000;
+    box-shadow: 5px 5px 8px 0px rgba(119, 119, 119, 0.64);
+    -moz-box-shadow: 5px 5px 8px 0px rgba(119, 119, 119, 0.64);
+    -webkit-box-shadow: 5px 5px 8px 0px rgba(119, 119, 119, 0.64);
+
+}
+
 
 /*.invalid-feedback {*/
 /*    display: block;*/
