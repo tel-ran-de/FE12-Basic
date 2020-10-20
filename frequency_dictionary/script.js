@@ -1,21 +1,15 @@
-function frequencyDictionary(str) {
-    const dictionary = {};
+const inputText = "Отец мой Андрей Петрович Гринев в молодости своей служил при графе Минихе и вышел в отставку премьер-майором в 17.. году. С тех пор жил он в своей Симбирской деревне, где и женился на девице Авдотье Васильевне Ю., дочери бедного тамошнего дворянина. Нас было девять человек детей. Все мои братья и сестры умерли во младенчестве.";
 
-    const wordsArray = str.split(/[\s.,?:!;\-"]+/)
-        .filter(function(el) {
-            return el.length !== 0
-        });
+let wordsArray = inputText.split(/[ .,;:?!-]+/);
 
-    console.log(wordsArray);
-
-    for (let i = 0; i < wordsArray.length; i++) {
-        if (dictionary[wordsArray[i]]) {
-            dictionary[wordsArray[i]]++;
-        } else {
-            dictionary[wordsArray[i]] = 1;
+function createObjectFromText(wordsArray){
+    const wordsCounter = {};
+    for (let i = 0; i<wordsArray.length; i++){
+        if(!wordsCounter[wordsArray[i]]){
+            wordsCounter[wordsArray[i]] = 0;
         }
+        wordsCounter[wordsArray[i]] +=1;
     }
-    return dictionary;
+    return wordsCounter;
 }
-
-console.log(frequencyDictionary('Отец мой Андрей Петрович Гринев в молодости своей служил при графе Минихе и вышел в отставку премьер-майором в 17.. году. С тех пор жил он в своей Симбирской деревне, где и женился на девице Авдотье Васильевне Ю., дочери бедного тамошнего дворянина. Нас было девять человек детей. Все мои братья и сестры умерли во младенчестве.'));
+console.log(createObjectFromText(wordsArray));
