@@ -1,6 +1,5 @@
 function frequencyDictionary(str) {
     const dictionary = {};
-
     const wordsArray = wordsStringToArray(str);
 
     console.log(wordsArray);
@@ -16,8 +15,8 @@ function frequencyDictionary(str) {
 }
 
 function wordsStringToArray(str) {
-    return str.split(/[\s.,?:!;\-"]+/)
-        .filter(function(el) {
+    return str.toLowerCase().split(/[\s.,?:!;\-"'()]+/)
+        .filter(function (el) {
             return el.length !== 0
         });
 }
@@ -28,7 +27,7 @@ function onButtonClick() {
         document.querySelector('.input-group div.invalid-feedback.empty').style.display = 'block';
         return;
     }
-    if (wordsStringToArray(text).length < 2 ) {
+    if (wordsStringToArray(text).length < 2) {
         document.querySelector('.input-group div.invalid-feedback.minvalue').style.display = 'block';
         return;
     }
@@ -49,4 +48,33 @@ function insertIntoTable(wordsObject) {
         toBeInserted += `<tr><th scope="row">${i++}</th><td>${word}</td><td>${wordsObject[word]}</td></tr>`;
     }
     element.innerHTML = toBeInserted;
+}
+
+
+function showTop3() {
+    const text = document.getElementById('textForAnalysis').value;
+    let sorted = Object.fromEntries(
+        Object.entries(frequencyDictionary(text))
+            .sort((a, b) => b[1] - a[1]).slice(0, 3)
+    );
+    insertIntoTable(sorted);
+}
+
+function showBottom3() {
+    const text = document.getElementById('textForAnalysis').value;
+    let sorted = Object.fromEntries(
+        Object.entries(frequencyDictionary(text))
+            .sort((a, b) => a[1] - b[1]).slice(0, 3)
+        )
+    ;
+    insertIntoTable(sorted);
+}
+
+function showAllSorted() {
+    const text = document.getElementById('textForAnalysis').value;
+    let sorted = Object.fromEntries(
+        Object.entries(frequencyDictionary(text))
+            .sort((a, b) => b[1] - a[1])
+    );
+    insertIntoTable(sorted);
 }
