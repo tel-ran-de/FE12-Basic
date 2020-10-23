@@ -6,6 +6,6 @@ table.table {
     margin-top: 2em;
 }
 
-/*.invalid-feedback {*/
-/*    display: block;*/
-/*}*/
+.input-group textarea {
+    height: 20em;
+}
