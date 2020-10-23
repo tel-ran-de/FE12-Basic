@@ -21,7 +21,12 @@
             Please type more than 1 word.
         </div>
     </div>
-    <button type="button" class="btn btn-primary" onclick="onButtonClick()">Click to analyse</button>
+<!--    <button type="button" class="btn btn-primary" onclick="onButtonClick()">Click to analyse</button>-->
+    <div class="btn-group" role="group" aria-label="Results">
+        <button type="button" class="btn btn-primary active" aria-pressed="true" onclick="getTop3OnButtonClick()">Top 3</button>
+        <button type="button" class="btn btn-primary active" aria-pressed="true" onclick="getLow3OnButtonClick()">Bottom 3</button>
+        <button type="button" class="btn btn-primary active" aria-pressed="true" onclick="getAllOnButtonClick()">Show all</button>
+    </div>
 
     <table class="table">
         <thead>

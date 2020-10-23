@@ -17,22 +17,48 @@ function frequencyDictionary(str) {
 
 function wordsStringToArray(str) {
     return str.split(/[\s.,?:!;\-"]+/)
-        .filter(function(el) {
+        .filter(function (el) {
             return el.length !== 0
         });
 }
 
-function onButtonClick() {
+function onButtonClick(sortType) {
     const text = document.getElementById('textForAnalysis').value;
+
     if (text === '') {
         document.querySelector('.input-group div.invalid-feedback.empty').style.display = 'block';
         return;
     }
-    if (wordsStringToArray(text).length < 2 ) {
+    if (wordsStringToArray(text).length < 2) {
         document.querySelector('.input-group div.invalid-feedback.minvalue').style.display = 'block';
         return;
     }
-    insertIntoTable(frequencyDictionary(text));
+    if (sortType === 0) {// показывать все
+        return insertIntoTable(frequencyDictionary(text));
+    }
+
+    if (sortType === 1) {// по возрастанию
+        let sortable = Object.fromEntries(
+            Object.entries(frequencyDictionary(text)).sort(([, a], [, b]) => a - b));
+        return insertIntoTable(sortable);
+    }
+    if (sortType === 2) {// по убыванию
+        let sortable = Object.fromEntries(
+            Object.entries(frequencyDictionary(text)).sort(([, a], [, b]) => b - a));
+        return insertIntoTable(sortable, 3);
+    }
+}
+
+function getTop3OnButtonClick() {
+    return onButtonClick(2);
+}
+
+function getLow3OnButtonClick() {
+    return onButtonClick(1);
+}
+
+function getAllOnButtonClick() {
+    return onButtonClick(0);
 }
 
 function handleOnFocus() {
@@ -43,6 +69,7 @@ function handleOnFocus() {
 
 function insertIntoTable(wordsObject) {
     const element = document.querySelector('table.table tbody');
+
     let toBeInserted = '';
     let i = 1;
     for (const word in wordsObject) {

@@ -1,12 +1,21 @@
 button {
     margin-top: 1em;
 }
+
 table.table{
     margin-top: 2em;
 }
 
+table tr:nth-child(n+4) {
+    display: none;
+}
+
 table.table {
     margin-top: 2em;
+}
+
+.backgroundGrey {
+    background-color: gray;
 }
 
 /*.invalid-feedback {*/
