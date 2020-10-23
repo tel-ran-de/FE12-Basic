@@ -16,23 +16,48 @@ function frequencyDictionary(str) {
 }
 
 function wordsStringToArray(str) {
-    return str.split(/[\s.,?:!;\-"]+/)
-        .filter(function(el) {
+    return str.split(/[\s.,?:!;'\-1234567890"]+/)
+        .filter(function (el) {
             return el.length !== 0
         });
 }
 
-function onButtonClick() {
-    const text = document.getElementById('textForAnalysis').value;
+
+function checkTextLength(text) {
     if (text === '') {
         document.querySelector('.input-group div.invalid-feedback.empty').style.display = 'block';
-        return;
+        return false;
     }
-    if (wordsStringToArray(text).length < 2 ) {
+    if (wordsStringToArray(text).length < 2) {
         document.querySelector('.input-group div.invalid-feedback.minvalue').style.display = 'block';
-        return;
+        return false;
     }
-    insertIntoTable(frequencyDictionary(text));
+    return true;
+}
+
+function getSorted() {
+    const text = document.getElementById('textForAnalysis').value;
+    let dictionary = frequencyDictionary(text);
+    let sortedDictionary = {};
+
+    if (checkTextLength(text)) {
+        sortedDictionary = Object.fromEntries(Object.entries(dictionary).sort(((a, b) => b[1] - a[1])));
+    }
+    return sortedDictionary;
+}
+
+function treeMostFrequentWordsButton() {
+    let mostFrequentWords = Object.entries(getSorted()).slice(0, 3);
+    insertIntoTable(mostFrequentWords);
+}
+
+function treeLeastFrequentWordsButton() {
+    let leastFrequentWords = Object.entries(getSorted()).slice(-3);
+    insertIntoTable(leastFrequentWords);
+}
+
+function showAllWordsButton() {
+    insertIntoTable(getSorted());
 }
 
 function handleOnFocus() {
@@ -46,7 +71,7 @@ function insertIntoTable(wordsObject) {
     let toBeInserted = '';
     let i = 1;
     for (const word in wordsObject) {
-        toBeInserted += `<tr><th scope="row">${i++}</th><td>${word}</td><td>${wordsObject[word]}</td></tr>`;
+        toBeInserted += `<tr><th scope="row">${i++}</th><td>${wordsObject[word][0]}</td><td>${wordsObject[word][1]}</td></tr>`;
     }
     element.innerHTML = toBeInserted;
 }
