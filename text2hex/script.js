@@ -16,17 +16,21 @@ function convertTextToHEX() {
     }
     document.querySelector('div.hex').innerHTML = textHEX;
 }
+
 // все зависает ((
 function convertHEXToText() {
     const hex = document.querySelector('div.hex').innerHTML;
+    console.log(hex);
     document.querySelector('div.hex').innerHTML = "";
-    let start = 0;
-    while (start < hex.length ) {
+    for (let start = 0; start < hex.length; ) {
+        console.log("start: " + start); //immer "6"
         let end = hex.indexOf(' ', start);
+        console.log("end: " + end);
         let charText = hex.substr(start, end);
+        let text = String.fromCharCode(parseInt(charText));
         start = end;
 
-        textFromHEX += charText;
+        textFromHEX += text;
     }
     document.querySelector('div.hex').innerHTML = textFromHEX;
 }
