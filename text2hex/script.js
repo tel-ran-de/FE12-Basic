@@ -9,7 +9,7 @@ function convertTextToHEX() {
     for (let i = 0; i < text.length; i++) {
         let a = text.charCodeAt(i);
         let b = a.toString(16);
-        if (i % lenghtHEXString === 0) {
+        if (i > 1 && i % lenghtHEXString === 0) {
             textHEX += '<br>';
         }
         textHEX += b + " ";
@@ -17,18 +17,20 @@ function convertTextToHEX() {
     document.querySelector('div.hex').innerHTML = textHEX;
 }
 
-// все зависает ((
 function convertHEXToText() {
     const hex = document.querySelector('div.hex').innerHTML;
     console.log(hex);
     document.querySelector('div.hex').innerHTML = "";
-    for (let start = 0; start < hex.length; ) {
-        console.log("start: " + start); //immer "6"
-        let end = hex.indexOf(' ', start);
+    let start = 0;
+    let  text;
+    while (start<hex.length) {
+        console.log("start: " + start);
+        let end = hex.indexOf(' ', start + 1);
         console.log("end: " + end);
-        let charText = hex.substr(start, end);
-        let text = String.fromCharCode(parseInt(charText));
-        start = end;
+        let charText = hex.substring(start, end);
+        console.log(charText);
+        text = String.fromCharCode(parseInt(charText.toString(), 16));
+        start = end + 1;
 
         textFromHEX += text;
     }
