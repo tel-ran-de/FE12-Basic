@@ -36,6 +36,7 @@ function generateFrequencyDictionary(str) {
 
     return dictionaryArray;
 }
+console.log();
 
 function bubbleSort(inArray, comparator) {
     const arr = [...inArray];
