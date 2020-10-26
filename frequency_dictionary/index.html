@@ -26,7 +26,7 @@
     <div>
         <button type="button" class="btn btn-primary" onclick="showTop3()">Top 3</button>
         <button type="button" class="btn btn-primary" onclick="showBottom3()">Bottom 3</button>
-        <button type="button" class="btn btn-primary" onclick="showAll()">Show all</button>
+        <button type="button" class="btn btn-primary" onclick="loadList()">Show all</button>
     </div>
     <table class="table">
         <thead>
@@ -39,5 +39,11 @@
         <tbody>
         </tbody>
     </table>
+    <div style="text-align:center; margin:30px">
+        <input type="button" id="first" onclick="firstPage()" value="first" />
+        <input type="button" id="next" onclick="nextPage()" value="next" />
+        <input type="button" id="previous" onclick="previousPage()" value="previous" />
+        <input type="button" id="last" onclick="lastPage()" value="last" />
+    </div>
 </body>
 </html>
