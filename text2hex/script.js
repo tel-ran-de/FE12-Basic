@@ -1,5 +1,6 @@
-let textHEX;
+let textHEX = "";
 let lenghtHEXString = 32;
+let textFromHEX = "";
 
 function convertTextToHEX() {
 
@@ -14,4 +15,18 @@ function convertTextToHEX() {
         textHEX += b + " ";
     }
     document.querySelector('div.hex').innerHTML = textHEX;
+}
+// все зависает ((
+function convertHEXToText() {
+    const hex = document.querySelector('div.hex').innerHTML;
+    document.querySelector('div.hex').innerHTML = "";
+    let start = 0;
+    while (start < hex.length ) {
+        let end = hex.indexOf(' ', start);
+        let charText = hex.substr(start, end);
+        start = end;
+
+        textFromHEX += charText;
+    }
+    document.querySelector('div.hex').innerHTML = textFromHEX;
 }
