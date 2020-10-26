@@ -1,38 +1,36 @@
-let textHEX = "";
-let lenghtHEXString = 32;
-let textFromHEX = "";
+let lenghtHEXString = 10;
 
 function convertTextToHEX() {
 
+    let textHEX = "";
+
     const text = document.querySelector('textarea').value;
+    document.querySelector('div.hex').innerHTML = "";
 
     for (let i = 0; i < text.length; i++) {
-        let a = text.charCodeAt(i);
-        let b = a.toString(16);
         if (i > 1 && i % lenghtHEXString === 0) {
             textHEX += '<br>';
         }
-        textHEX += b + " ";
+        textHEX += text.charCodeAt(i).toString(16) + " ";
     }
     document.querySelector('div.hex').innerHTML = textHEX;
 }
 
+// trim spase-symbol at the begin and end
+// Dont make "Enter"
 function convertHEXToText() {
+    let textFromHEX = "";
     const hex = document.querySelector('div.hex').innerHTML;
-    console.log(hex);
     document.querySelector('div.hex').innerHTML = "";
     let start = 0;
-    let  text;
-    while (start<hex.length) {
-        console.log("start: " + start);
-        let end = hex.indexOf(' ', start + 1);
-        console.log("end: " + end);
-        let charText = hex.substring(start, end);
-        console.log(charText);
-        text = String.fromCharCode(parseInt(charText.toString(), 16));
+    let end
+    let symbol;
+    while (start < hex.length) {
+        end = hex.indexOf(' ', start + 1);
+        symbol = String.fromCharCode(parseInt(hex.substring(start, end), 16));
         start = end + 1;
 
-        textFromHEX += text;
+        textFromHEX += symbol;
     }
     document.querySelector('div.hex').innerHTML = textFromHEX;
 }
