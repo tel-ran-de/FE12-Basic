@@ -20,8 +20,10 @@
             Please type more than 1 word.
         </div>
     </div>
-    <button type="button" class="btn btn-primary" onclick="convertToHex()">Click to convert</button>
-
+    <div class="ui-button">
+    <button type="button" class="btn btn-primary" onclick="convertTextToHex()">Click to convert text to hex</button>
+    <button type="button" class="btn btn-primary" onclick="convertHexToText()">Click to convert hex to text</button>
+    </div>
     <div id="outputHex"> <!-- 32 symbols, you can use functions a.charCodeAt(0), b.toString(16) -->
         1A 2B OF 2A 5C
     </div>
