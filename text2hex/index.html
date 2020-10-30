@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Text to hex converter</title>
+    <title>Hex - String converter</title>
     <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
@@ -10,7 +10,7 @@
 <body class="container">
     <div class="input-group">
         <div class="input-group-prepend">
-            <span class="input-group-text">Please type your text to be converted here</span>
+            <span class="input-group-text">Please type to be converted here</span>
         </div>
         <textarea class="form-control" aria-label="With textarea"></textarea>
         <div class="invalid-feedback empty">
@@ -20,10 +20,12 @@
             Please type more than 1 word.
         </div>
     </div>
-    <button type="button" class="btn btn-primary" onclick="">Click to convert</button>
+    <button type="button" class="btn btn-primary" onclick="textToHex()">Click to convert text to HEX</button>
+    <div class="hex-result">
+    </div>
 
-    <div> <!-- 32 symbols, you can use functions a.charCodeAt(0), b.toString(16) -->
-        1A 2B OF 2A 5C
+    <button type="button" class="btn btn-primary" onclick="hexToString()">Click to convert HEX to text</button>
+    <div class="hex-string">
     </div>
 
 </body>
