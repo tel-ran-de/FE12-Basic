@@ -3,8 +3,10 @@ function stringToHex() {
     let hex = '';
     for (let i = 0; i < str.length; i++) {
         hex += str.charCodeAt(i).toString(16) + ' ';
-        if(i % 32 === 0 ){
+        if(i !== 0 && i % 32 === 0 ){
             hex += '<br>';
+        }if((i + 1) % 32 !== 0 && (i + 1) !== str.length){
+            hex += ' ';
         }
     }
     document.getElementById('hex').innerHTML = hex;
