@@ -1,0 +1,12 @@
+div.input-group {
+    min-height: 20em;
+    margin-top: 2em;
+}
+
+.submit-button {
+    margin-top: 1em;
+}
+
+#hex-container {
+    margin-top: 2em;
+}
