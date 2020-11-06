@@ -16,7 +16,7 @@ function Person(firstName, lastName, gender, address) {
 }
 
 Person.prototype.bio = function () {
-    return this.firstName + ' ' + this.lastName + ' ' + this.gender + ' ' + this.address();
+    return this.firstName + ' ' + this.lastName + ' ' + this.gender + ' ' + this.sayAddress();
 }
 
 Person.prototype.sayAddress = function () {
