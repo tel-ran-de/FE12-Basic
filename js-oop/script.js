@@ -33,7 +33,7 @@ function Address(street, houseNumber, city, country, zip) {
     this.zip = zip;
 }
 
-Person.prototype.Address = new Address();
+Person.prototype.address = new Address();
 
 Person.prototype.bio = function () {
     return this.firstName + ' ' + this.lastName + ' ' + this.gender;
@@ -52,15 +52,18 @@ Address.prototype.getAddress = function (){
 }
 
 Person.prototype.sayAddress = function (){
-    return 'address is ' + this.Address.getAddress();
+    return 'address is ' + this.address.getAddress();
 }
 
 const person1 = new Person('Vasya', 'Pupkin', 'male');
 const person2 = new Person('Jack', 'Russel', 'terrier');
 const person3 = new Person('Alexander', 'Pushkin', 'male');
 
-person3.Address = new Address('river Moyka','12', 'St Petersburg', 'Russia', '191186');
+//person3.address = new Address('river Moyka','12', 'St Petersburg', 'Russia', '191186');
+
+person3.address['street'] = 'river Moyka';
+person3.address['zip'] = '191186';
+person3.address['country'] = 'Russia';
+person3.address['houseNumber'] = '12';
 
 console.log(person3.sayAddress(person3));
-
-
