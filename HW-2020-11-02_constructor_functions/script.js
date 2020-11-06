@@ -6,20 +6,21 @@ function Address(street, houseNumber, city, country, zip) {
     this.zip = zip;
 }
 
-function Person(firstName, lastName, gender) {
+function Person(firstName, lastName, gender, address) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.gender = gender;
+    this.address = function () {
+        return address.street + ' ' + address.houseNumber + ' ' + address.city + ' ' + address.country + ' ' + address.zip;
+    };
 }
 
-Person.prototype.address = new Address();
-
 Person.prototype.bio = function () {
-    return this.firstName + ' ' + this.lastName + ' ' + this.gender + ' ' + this.address;
+    return this.firstName + ' ' + this.lastName + ' ' + this.gender + ' ' + this.address();
 }
 
 Person.prototype.sayAddress = function () {
-    return this.address.street + ' ' + this.address.houseNumber + ' ' + this.address.city + ' ' + this.address.country + ' ' + this.address.zip;
+    return this.address();
 }
 
 const pushkin = new Person('Alexander', 'Pushkin', 'male');
