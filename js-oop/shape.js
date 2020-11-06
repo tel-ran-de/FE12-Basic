@@ -21,3 +21,31 @@ console.log(square.calcPerimeter());
 
 const triangle = new Shape('triangle', 3, 3);
 
+console.log(triangle.calcPerimeter());
+
+const circle = new Shape('circle', 1);
+console.log(circle.calcPerimeter());
+
+circle.radius = 5;
+// Overriding of calcPerimeter function in Shape.prototype
+circle.calcPerimeter = function() {
+    return 2 * Math.PI * this.radius;
+}
+
+console.log(circle.calcPerimeter());
+
+circle.toString = function() {
+    return this.name + ' with radius of ' + this.radius;
+}
+
+Shape.prototype.toString = function() {
+    return this.name + ' with number of sides ' + this.sides + ' and side length of ' + this.sideLength;
+}
+
+Shape.prototype.color = 'green';
+
+for (let field in circle) {
+    if (circle.hasOwnProperty(field)) {
+        console.log(field);
+    }
+}
