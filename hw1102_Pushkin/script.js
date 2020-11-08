@@ -1,35 +1,35 @@
 function Address(street, houseNumber, city, country, zip) {
-    this.address = {
-        street: street,
-        houseNumber: houseNumber,
-        city: city,
-        country: country,
-        zip: zip
-    };
+    this.street = street;
+    this.houseNumber = houseNumber;
+    this.city = city;
+    this.country = country;
+    this.zip = zip;
+}
+
+function Person(firstName, lastName, gender) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.gender = gender;
+}
+
+Person.prototype.address = new Address();
+Person.prototype.sayAddress = function () {
     return this.address.street + ', ' + this.address.houseNumber + ' ' + this.address.city + ' '
         + this.address.country + ' ' + this.address.zip;
 }
 
-function Person(firstName, lastName, gender) {
-    const person = {};
-    person.firstName = firstName;
-    person.lastName = lastName;
-    person.gender = gender;
-    Person.prototype.address = new Address();
-    person.sayAddress = function () {
-        return "The address is: " + person.address;
-    }
-    person.bio = function () {
-        return person.firstName + ' ' + person.lastName + ', ' + person.gender;
-    };
-    return person;
-}
+Person.prototype.bio = function () {
+    return this.firstName + ' ' + this.lastName + ', ' + this.gender;
+};
 
-const pushkin = Person('Alexander', 'Pushkin', 'male');
+const pushkin = new Person('Alexander', 'Pushkin', 'male');
 console.log('for Pushkin: ' + pushkin.sayAddress());
 
 const person3 = new Person(pushkin.firstName, pushkin.lastName, pushkin.gender);
 console.log(person3.bio());
-console.log(person3.address);
-//doesn't work
+person3.address.street = 'Moyka';
+person3.address.houseNumber = '12';
+person3.address.city = 'St.Petersburg';
+person3.address.country = 'Russia';
+person3.address.zip = '191186';
 console.log('for person3: ' + person3.sayAddress());
