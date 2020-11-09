@@ -10,14 +10,12 @@ function Airplane(name) {
 
 Airplane.prototype.isFlying = false;
 
-Airplane.prototype.takeOff = function (isFlying) {
-    isFlying = true;
-    return isFlying;
+Airplane.prototype.takeOff = function () {
+    return this.isFlying = true;
 }
 
-Airplane.prototype.land = function (isFlying) {
-    isFlying = false;
-    return isFlying;
+Airplane.prototype.land = function () {
+    return this.isFlying = false;
 }
 let fokker = new Airplane("Fokker");
 let jet = new Airplane("Jet");
