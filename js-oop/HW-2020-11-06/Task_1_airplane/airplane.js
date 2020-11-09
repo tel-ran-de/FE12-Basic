@@ -5,23 +5,28 @@ function Airplane(name) {
 Airplane.prototype.isFlying = false;
 
 
-Airplane.prototype.takeOff = function (isFlying) {
-    return isFlying = true;
+Airplane.prototype.takeOff = function () {
+    this.isFlying = true;
 }
 
 Airplane.prototype.land = function () {
-    return Airplane.prototype.isFlying;
+    this.isFlying = false;
 }
 
 const boeing = new Airplane('Boeing');
 
 console.log(boeing);
-console.log(boeing.name + ' is Flying status by take off - ' + boeing.takeOff());
-console.log(boeing.name + ' is Flying status by land - ' + boeing.land());
+boeing.takeOff();
+console.log(boeing.isFlying);
+boeing.land();
+console.log(boeing.isFlying);
 
 const airbus = new Airplane('Airbus');
 console.log(airbus);
-console.log(airbus.name + ' is Flying status by take off - ' + airbus.takeOff());
-console.log(airbus.name + ' is Flying status by land - ' + airbus.land());
-console.log(airbus.land());
+airbus.takeOff();
+console.log(airbus.isFlying);
+airbus.land();
+console.log(airbus.isFlying);
+
+
 
