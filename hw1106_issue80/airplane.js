@@ -9,26 +9,16 @@ function Airplane(name) {
     this.name = name;
 }
 
-Airplane.prototype.isFlying = function () {
-    return false;
+Airplane.prototype.isFlying = false;
+
+Airplane.prototype.takeOff = function () {
+    this.isFlying = true;
 }
 
-Airplane.prototype.takeOff = function(){
-    return this.name + ' takes off';
+Airplane.prototype.land = function () {
+    this.isFlying = false;
 }
 
-Airplane.prototype.land = function(){
-    return this.name + ' lands';
-}
-
-Airplane.prototype.fly = function (isFlying) {
-    if (isFlying) {
-        return this.land();
-    } else
-        return this.takeOff();
-}
-
-const airplane1 = new Airplane('Boeing 747');
-console.log(airplane1.fly(false));
-const airplane2 = new Airplane('Airbus');
-console.log(airplane2.fly(true));
+const airplane1 = new Airplane('Boeing');
+console.log(airplane1.land());
+console.log(airplane1.takeOff());
