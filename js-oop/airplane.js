@@ -1,4 +1,4 @@
-function Airplane(name, isFlying){
+function Airplane(name){
     this.name = name;
     this.isFlying = false;
 }
@@ -8,7 +8,10 @@ Airplane.prototype.takeOff = function (){
 Airplane.prototype.land = function (){
     this.isFlying = false;
 }
-let boeing = new Airplane("Boeing",false);
+let boeing = new Airplane("Boeing");
 
-console.log(boeing.name + ' is taking off: ' + boeing.takeOff());
-console.log(boeing.name + ' is landing: ' + boeing.land());
+boeing.takeOff();
+console.log(boeing.isFlying)
+
+boeing.land();
+console.log(boeing.isFlying)
