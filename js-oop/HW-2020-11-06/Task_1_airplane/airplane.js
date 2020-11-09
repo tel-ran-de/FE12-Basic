@@ -9,8 +9,8 @@ Airplane.prototype.takeOff = function (isFlying) {
     return isFlying = true;
 }
 
-Airplane.prototype.land = function (isFlying) {
-    return isFlying = false;
+Airplane.prototype.land = function () {
+    return Airplane.prototype.isFlying;
 }
 
 const boeing = new Airplane('Boeing');
@@ -23,4 +23,5 @@ const airbus = new Airplane('Airbus');
 console.log(airbus);
 console.log(airbus.name + ' is Flying status by take off - ' + airbus.takeOff());
 console.log(airbus.name + ' is Flying status by land - ' + airbus.land());
+console.log(airbus.land());
 
