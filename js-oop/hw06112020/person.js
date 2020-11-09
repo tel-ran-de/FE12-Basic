@@ -4,13 +4,19 @@ function Person(name, age) {
     this.stomach = [];
 }
 
+Person.prototype.unedible = ['stone', 'wood', 'plastic', 'glass'];
+
 Person.prototype.eat = function (food) {
+    if (this.unedible.includes(food)){
+        console.log(food + ' is not edible');
+        return;
+    }
     if (this.stomach.length < 10) {
         this.stomach.push(food);
         console.log('Person ' + this.name + ' is eating ' + food);
-    } else {
-        console.log('Person ' + this.name + ' is not hungry');
+        return;
     }
+        console.log('Person ' + this.name + ' is not hungry');
 }
 
 Person.prototype.poop = function () {
@@ -24,16 +30,6 @@ Person.prototype.toString = function () {
 
 const pers = new Person("Mary", 50);
 pers.eat('banana');
-pers.eat('carrot');
-pers.eat('carrot');
-pers.eat('chips');
-pers.eat('fish');
-pers.eat('cake');
-pers.eat('cake');
-pers.eat('cake');
-pers.eat('tomato');
-pers.eat('tomato');
-pers.eat('candy');
 pers.poop();
 pers.toString();
 
