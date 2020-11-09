@@ -16,4 +16,3 @@ Airplane.prototype.land = function () {
 const airplane1 = new Airplane('Georgy');
 airplane1.takeOff();
 airplane1.land();
-
