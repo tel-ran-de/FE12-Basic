@@ -10,6 +10,12 @@
 // Give instances of Person a method .toString():
 //     It should return a string with name and age. Example: "Mary, 50"
 
+// TASK 3 - adding allergens to person
+//     Person can have their own allergens list, that can be initialized in constructor.
+//     After checking if the food is edible, check if the food is not allergen for this person.
+//     Please note, that allergens list can be empty.
+
+
 function Person(name, age) {
     this.name = name;
     this.age = age;
@@ -17,10 +23,15 @@ function Person(name, age) {
 }
 
 Person.prototype.unedible = ['stone', 'wood', 'plastic'];
+Person.prototype.allergens = ['orange', 'cheese'];
 
 Person.prototype.eat = function (someFood) {
     if (this.unedible.includes(someFood)) {
         console.log(someFood + ' is not edible')
+        return;
+    }
+    if (this.allergens.includes(someFood)) {
+        console.log(someFood + ' is allergen for ' + this.name)
         return;
     }
     if (this.stomach.length < 10) {
@@ -42,5 +53,6 @@ Person.prototype.toString = function () {
 const person1 = new Person('Jonny', 5);
 person1.eat('apple');
 person1.eat('wood');
+person1.eat('cheese');
 person1.poop();
 person1.toString();
