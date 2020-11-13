@@ -2,28 +2,30 @@ function Person(name, age, allergensList) {
     this.name = name;
     this.age = age;
     this.stomach = [];
-    this.allergensList = allergensList;
+    if (allergensList !== undefined) {
+        this.allergensList = allergensList;
+    }
+    else this.allergensList = [];
 }
 
 Person.prototype.unedible = ['stone', 'wood', 'plastic', 'glass'];
 
-Person.prototype.eat = function (...food) {
-    //if (this.unedible.includes(food)){
-    if (food.forEach(meal => this.unedible.includes(meal))){
-        console.log(food + ' is not edible');
+Person.prototype.eat = function (food) {
+    //if (food.forEach(meal => (this.unedible.includes(meal)))){  -> doesn't works
+    if (this.unedible.includes(food)){
+        console.log('This meal is not edible');
         return;
     }
 
     if (this.allergensList.length !== 0){
-        if (food.forEach(meal => this.unedible.includes(meal))){
+        if (this.allergensList.includes(food)){
             console.log(this.name + ' has allergic from the ' + food);
             return;
         }
     }
 
     if (this.stomach.length < 10) {
-        food.forEach(meat => this.stomach.push(meat));
-        //this.stomach.push(food);
+        this.stomach.push(food);
         console.log('Person ' + this.name + ' is eating ' + food);
         return;
     }
@@ -42,4 +44,9 @@ Person.prototype.toString = function () {
 const pers = new Person("Mary", 50);
 pers.eat('banana');
 pers.poop();
-pers.toString();
+console.log(pers.toString());
+pers.allergensList = ['milk', 'egg'];
+pers.eat('milk');
+pers.eat('apple');
+pers.eat('wood');
+console.log(pers.stomach);
