@@ -11,16 +11,21 @@ function Airplane(name) {
 Airplane.prototype.isFlying = false;
 
 Airplane.prototype.takeOff = function () {
-    return this.isFlying = true;
+    this.isFlying = true;
 }
 
 Airplane.prototype.land = function () {
-    return this.isFlying = false;
+    this.isFlying = false;
 }
 let fokker = new Airplane("Fokker");
 let jet = new Airplane("Jet");
-console.log(fokker.name + ' is taking off: ' + fokker.takeOff());
-console.log(fokker.name + ' is landing: ' + fokker.land());
 
-console.log(jet.name + ' is taking off: ' + jet.takeOff());
-console.log(jet.name + ' is landing: ' + jet.land());
+fokker.takeOff()
+console.log(fokker.name + ' is taking off and flying: ' + fokker.isFlying);
+fokker.land()
+console.log(fokker.name + ' is landing: ' + fokker.isFlying);
+
+jet.takeOff()
+console.log(jet.name + ' is taking off and flying: ' + jet.isFlying);
+jet.land()
+console.log(jet.name + ' is landing: ' + jet.isFlying);
