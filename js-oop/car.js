@@ -11,23 +11,26 @@ Car.prototype.fill = function (liters) {
 }
 
 Car.prototype.drive = function (distance) {
-    if(this.tank > 0) {
-        if ((this.tank - distance / this.kmsPerLiter) >= 0) {
+    if(this.tank <= 0) {
+        console.log('Please, fill the tank with a fuel.')
+        return;
+    }
+    if ((this.tank - distance / this.kmsPerLiter) >= 0) {
             this.odometr += distance;
             this.tank -= distance / this.kmsPerLiter;
             console.log('There car ' + this.model + ' is driving.')
             console.log('There are ' + this.tank + ' liters in the tank.')
             return;
         }
-        distance = this.tank/this.kmsPerLiter;
-        this.odometr += distance;
-        this.tank -= distance / this.kmsPerLiter;
-        console.log('There car ' + this.model + ' can drive only ' + distance + 'km.')
+        const actualDistance = this.tank/this.kmsPerLiter;
+        this.odometr += actualDistance;
+        this.tank -= actualDistance / this.kmsPerLiter;
+        console.log('There car ' + this.model + ' can drive only ' + actualDistance + 'km.')
         console.log('There tank is leer. Please, fill the tank with a fuel.')
         return;
 
-    }
-    console.log('Please, fill the tank with a fuel.')
+
+
 
 }
 
