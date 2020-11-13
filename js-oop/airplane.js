@@ -1,8 +1,10 @@
+
 function Airplane(name) {
     this.name = name;
 }
 
 Airplane.prototype.isFlying = false;
+
 
 Airplane.prototype.takeOff = function() {
     this.isFlying = true;
