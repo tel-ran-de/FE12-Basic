@@ -15,8 +15,8 @@ Car.prototype.drive = function (distance) {
     const litersNeededForDistance = (distance * this.litersPer100km) / 100;
 
     if (this.tank < litersNeededForDistance) {
-        this.odometer += (distance - (((litersNeededForDistance - this.tank) * 100) / this.litersPer100km));
-        console.log('I ran out of fuel at ' + (((litersNeededForDistance - this.tank) * 100) / this.litersPer100km) + ' kms!');
+        this.odometer += distance - ((litersNeededForDistance - this.tank) * 100 / this.litersPer100km);
+        console.log('I ran out of fuel at ' + ((litersNeededForDistance - this.tank) * 100 / this.litersPer100km) + ' kms!');
 
         return;
     }
