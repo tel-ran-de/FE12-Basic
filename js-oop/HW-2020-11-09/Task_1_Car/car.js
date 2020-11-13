@@ -14,16 +14,16 @@ Car.prototype.fill = function (liters) {
 Car.prototype.drive = function (distance) {
     const distanceТoЕmptyТank = this.tank * (100 / this.fuelConsumption);
 
-    if (this.tank > 0 && this.odometer < distanceТoЕmptyТank) {
+    if (this.tank > 0 && distance < distanceТoЕmptyТank) {
         this.tank -= (distance * this.fuelConsumption) / 100;
         this.odometer += distance;
         console.log(this.model + ' drove ' + this.odometer + ' km and has ' + this.tank + ' liters of fuel in the tank.');
+        return;
 
-    } else {
+    }
         this.odometer = (this.odometer + (this.tank * (100 / this.fuelConsumption)));
         this.tank = 0;
         return 'I ran out of fuel at ' + this.odometer + ' km!"';
-    }
 }
 
 const car1 = new Car('Mercedes', 10);
