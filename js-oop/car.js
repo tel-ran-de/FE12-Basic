@@ -15,7 +15,7 @@ Car.prototype.drive=function (distance){
         this.odometer+= distance;
         this.tank-= distance / this.kmsPerLiter;
         return;
-        this.odometer+= this.tank * this.kmsPerLiter;
     }
+    this.odometer+= this.tank * this.kmsPerLiter;
 }
 
