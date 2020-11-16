@@ -1,6 +1,6 @@
 function GameObject(imageUrl) {
     this.image = new Image();
-    if (imageUrl !== undefined) this.image.src = imageUrl;
+    if (imageUrl) this.image.src = imageUrl; //only in JS
     this.ready = false;
     this.x = 0;
     this.y = 0;
