@@ -1,21 +1,20 @@
 function GameObject(imageUrl) {
-    this.imageUrl = imageUrl;
+    this.image = new Image();
+    if (imageUrl !== undefined) this.image.src = imageUrl;
     this.ready = false;
     this.x = 0;
     this.y = 0;
+    this.image.onload = function () {   //doesn't work, I don't understand how to change it to make it works
+        getReadyOn();
+    }
 }
 
-GameObject.prototype.image = new Image();
-GameObject.prototype.onload = function () {
+function getReadyOn(){
     this.ready = true;
 }
 
 const gameObj = new GameObject('http://www.kenart.net/portfolio/images/gameprojects_alice.jpg');
 console.log(gameObj);
-gameObj.onload();
-gameObj.image.src = gameObj.imageUrl;
-
 console.log('------------');
-
-console.log(gameObj.image);
+gameObj.image.onload(undefined);
 console.log(gameObj);
