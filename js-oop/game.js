@@ -1,7 +1,7 @@
 function GameObject(imageUrl) {
     this.x = 0;
     this.y = 0;
-    this.image = new Image(this.x, this.y);
+    this.image = new Image();
     if (imageUrl) {
         this.image.src = imageUrl;
     }
