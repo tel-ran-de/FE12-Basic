@@ -1,6 +1,7 @@
 function GameObject(imageUrl) {
     this.x = 0;
     this.y = 0;
+    this.speed = 0;
     this.ready = false;
     this.image = new Image();
     this.image.onload = () => this.ready = true;
@@ -27,11 +28,26 @@ document.body.appendChild(canvas);
 hero.x = canvas.width / 2;
 hero.y = canvas.height / 2;
 
-monster.x = monster.image.width + (Math.random() * (canvas.width - monster.image.width * 2)); // not to appear in bush
-monster.y = monster.image.height + (Math.random() * (canvas.height - monster.image.height * 2)); // not to appear in bush
+monster.x = Math.floor(Math.random() * ((canvas.width - monster.image.width * 2) - monster.image.width)) + monster.image.width;
+monster.y = Math.floor(Math.random() * ((canvas.height - monster.image.height * 2) - monster.image.height)) + monster.image.height;
+
 
 const ctx = canvas.getContext('2d');
 
+hero.speed = 10;
+
+hero.moveUp = function () {
+    hero.y -= hero.speed;
+}
+hero.moveDown = function () {
+    hero.y += hero.speed;
+}
+hero.moveRight = function () {
+    hero.x += hero.speed;
+}
+hero.moveLeft = function () {
+    hero.x -= hero.speed;
+}
 window.addEventListener('keydown', (event) => {
     console.log(event);
     if (event.key === "ArrowUp") {
@@ -48,7 +64,7 @@ window.addEventListener('keydown', (event) => {
     }
 });
 
-window.addEventListener('keyup', (event) => {
+window.addEventListener('keydown', (event) => {
     console.log(event);
 });
 
@@ -60,9 +76,3 @@ const gameCycle = function() {
 }
 
 window.requestAnimationFrame(gameCycle);
-
-// setTimeout(() => {
-//     background.render(ctx);
-//     hero.render(ctx);
-//     monster.render(ctx);
-// }, 1500);
