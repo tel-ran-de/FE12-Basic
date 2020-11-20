@@ -1,6 +1,7 @@
 function GameObject(imageUrl) {
     this.x = 0;
     this.y = 0;
+    this.speed = 1;
     this.ready = false;
     this.image = new Image();
     this.image.onload = () => this.ready = true;
@@ -27,13 +28,34 @@ document.body.appendChild(canvas);
 hero.x = canvas.width / 2;
 hero.y = canvas.height / 2;
 
-monster.x = monster.image.width + (Math.random() * (canvas.width - monster.image.width * 2)); // not to appear in bush
-monster.y = monster.image.height + (Math.random() * (canvas.height - monster.image.height * 2)); // not to appear in bush
+hero.moveUp = function () {
+    this.y -= this.speed;
+}
+hero.moveDown = function () {
+    this.y += this.speed;
+}
+hero.moveLeft = function () {
+    this.x -= this.speed;
+}
+hero.moveRight = function () {
+    this.x += this.speed;
+}
+hero.speedUp = function() {
+    this.speed += 1;
+    console.log(this.speed);
+}
+hero.speedDown = function() {
+    if (this.speed > 1)
+        this.speed -= 1;
+    console.log(this.speed);
+}
+
+monster.x = monster.image.width + Math.random() * (canvas.width - 3 * monster.image.width);
+monster.y = monster.image.height + Math.random() * (canvas.height - 3 * monster.image.height);
 
 const ctx = canvas.getContext('2d');
 
 window.addEventListener('keydown', (event) => {
-    console.log(event);
     if (event.key === "ArrowUp") {
         hero.moveUp();
     }
@@ -45,6 +67,12 @@ window.addEventListener('keydown', (event) => {
     }
     if (event.key === "ArrowLeft") {
         hero.moveLeft();
+    }
+    if (event.code === "ControlRight") {
+        hero.speedUp();
+    }
+    if (event.code === "ControlLeft") {
+        hero.speedDown();
     }
 });
 
