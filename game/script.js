@@ -2,6 +2,7 @@ function GameObject(imageUrl) {
     this.x = 0;
     this.y = 0;
     this.ready = false;
+    this.speed = 0;
     this.image = new Image();
     this.image.onload = () => this.ready = true;
     if (imageUrl) {
@@ -9,7 +10,7 @@ function GameObject(imageUrl) {
     }
 }
 
-GameObject.prototype.render = function(ctx) {
+GameObject.prototype.render = function (ctx) {
     if (this.ready) {
         ctx.drawImage(this.image, this.x, this.y);
     }
@@ -27,13 +28,38 @@ document.body.appendChild(canvas);
 hero.x = canvas.width / 2;
 hero.y = canvas.height / 2;
 
-monster.x = monster.image.width + (Math.random() * (canvas.width - monster.image.width * 2)); // not to appear in bush
-monster.y = monster.image.height + (Math.random() * (canvas.height - monster.image.height * 2)); // not to appear in bush
+//random with using min and max = Math.random()*(Max-Min)+Min;
+monster.x = Math.floor((Math.random() * (canvas.width - monster.image.width * 2)) + monster.image.width);
+monster.y = Math.floor((Math.random() * (canvas.height - monster.image.height * 2)) + monster.image.height);
 
 const ctx = canvas.getContext('2d');
 
+hero.speed = 5;
+let speedRatio;
+hero.moveUp = function () {
+    hero.y -= hero.speed * speedRatio;
+}
+hero.moveDown = function () {
+    hero.y += hero.speed * speedRatio;
+}
+hero.moveRight = function () {
+    hero.x += hero.speed * speedRatio;
+}
+hero.moveLeft = function () {
+    hero.x -= hero.speed * speedRatio;
+}
+
 window.addEventListener('keydown', (event) => {
-    console.log(event);
+    if (event.code === "ControlLeft" || event.code === "MetaLeft") {
+        console.log("ControlLeft");
+        speedRatio = 2.0;
+        hero.moveLeft();
+    } else if (event.code === "ControlRight" || event.code === "MetaRight") {
+        speedRatio = 0.3;
+        hero.moveRight();
+    } else {
+        speedRatio = 1.0;
+    }
     if (event.key === "ArrowUp") {
         hero.moveUp();
     }
@@ -46,13 +72,14 @@ window.addEventListener('keydown', (event) => {
     if (event.key === "ArrowLeft") {
         hero.moveLeft();
     }
-});
-
-window.addEventListener('keyup', (event) => {
     console.log(event);
 });
 
-const gameCycle = function() {
+window.addEventListener('keydown', (event) => {
+    console.log(event);
+});
+
+const gameCycle = function () {
     background.render(ctx);
     hero.render(ctx);
     monster.render(ctx);
@@ -60,7 +87,6 @@ const gameCycle = function() {
 }
 
 window.requestAnimationFrame(gameCycle);
-
 // setTimeout(() => {
 //     background.render(ctx);
 //     hero.render(ctx);
