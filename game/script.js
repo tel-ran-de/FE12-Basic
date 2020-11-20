@@ -20,7 +20,6 @@ GameObject.prototype.render = function (ctx) {
 const background = new GameObject('images/background.png');
 const hero = new GameObject('images/hero.png');
 const monster = new GameObject('images/monster.png');
-console.log(monster.width);
 
 const canvas = document.createElement('canvas');
 canvas.width = 512;
@@ -30,13 +29,14 @@ document.body.appendChild(canvas);
 hero.x = canvas.width / 2;
 hero.y = canvas.height / 2;
 
-monster.x = monster.image.width + (Math.random() * (canvas.width - monster.image.width * 2)); // not to appear in bush
-monster.y = monster.image.height + (Math.random() * (canvas.height - monster.image.height * 2)); // not to appear in bush
+monster.x = Math.random() * ((canvas.width + 1 - monster.image.width * 2) + monster.image.width); // not to appear in bush
+monster.y = Math.random() * ((canvas.height + 1 - monster.image.height * 2) + monster.image.height); // not to appear in bush
+console.log(monster.width); // undefined
 
 const ctx = canvas.getContext('2d');
 
 hero.moveRight = function () {
-    this.x += 1 * this.speed*coef;
+    this.x += this.speed * coef;
 }
 
 let coef;
@@ -51,13 +51,13 @@ window.addEventListener('keydown', (event) => {
         coef = 1;
     }
     hero.moveUp = function () {
-        this.y -= 1 * this.speed*coef;
+        this.y -= this.speed * coef;
     }
     if (event.key === "ArrowUp") {
         hero.moveUp();
     }
     hero.moveDown = function () {
-        this.y += 1 * this.speed*coef;
+        this.y += this.speed * coef;
     }
     if (event.key === "ArrowDown") {
         hero.moveDown();
@@ -66,7 +66,7 @@ window.addEventListener('keydown', (event) => {
         hero.moveRight();
     }
     hero.moveLeft = function () {
-        this.x -= 1 * this.speed*coef;
+        this.x -= this.speed * coef;
     }
     if (event.key === "ArrowLeft") {
         hero.moveLeft();
