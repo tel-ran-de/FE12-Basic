@@ -72,10 +72,10 @@ const MovableGameObjectPrototype = {
         }
     },
     updateSpeed: function () {
-        if (keysPressed["ControlRight"]) {
+        if (keysPressed["metaKey"]) {
             hero.speedUp();
         }
-        if (keysPressed["ControlLeft"]) {
+        if (keysPressed["metaKey"]) {
             hero.speedDown();
         }
     }
@@ -96,9 +96,6 @@ monster.y = monster.image.height + Math.random() * (canvas.height - 3 * monster.
 
 const ctx = canvas.getContext('2d');
 
-const a = {
-}
-
 window.addEventListener('keydown', (event) => {
     keysPressed[event.key] = true;
     keysPressed[event.code] = true;
@@ -109,11 +106,16 @@ window.addEventListener('keyup', (event) => {
     keysPressed[event.code] = false;
 });
 
-const gameCycle = function() {
+let quantityOfCapturedMonsters = 0;
+const gameCycle = function () {
     hero.update();
 
     if (distanceBetweenTwoPoints(hero.x, monster.x, hero.y, monster.y) < hero.image.width / 2 + monster.image.width / 2) {
-        console.log("Hero caught monster!!!")
+
+        ++quantityOfCapturedMonsters;
+        hero.x = canvas.width / 2;
+        hero.y = canvas.height / 2;
+        console.log('Hero caught monster ' + quantityOfCapturedMonsters + ' time !!!')
     }
 
     background.render(ctx);
