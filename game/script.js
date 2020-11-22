@@ -122,6 +122,10 @@ const gameCycle = function () {
     hero.render(ctx);
     monster.render(ctx);
     window.requestAnimationFrame(gameCycle);
+
+    ctx.fillStyle = 'white';
+    ctx.font = "24px Arial";
+    ctx.fillText("Score : " + quantityOfCapturedMonsters, 40, 50);
 }
 
 window.requestAnimationFrame(gameCycle);
