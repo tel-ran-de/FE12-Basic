@@ -4,9 +4,9 @@ function createHero(imageUrl, canvas) {
     Object.assign(hero, MovableGameObjectPrototype);
 
     hero.reset = function() {
-        hero.x = canvas.width / 2;
-        hero.y = canvas.height / 2;
-        hero.speed = 0.1;
+        this.x = canvas.width / 2;
+        this.y = canvas.height / 2;
+        this.speed = 0.1;
     }
 
     hero.update = function(delta) {
