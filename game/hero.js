@@ -6,21 +6,21 @@ function createHero(imageUrl, canvas) {
     hero.reset = function() {
         hero.x = canvas.width / 2;
         hero.y = canvas.height / 2;
-        hero.speed = 1;
+        hero.speed = 0.1;
     }
 
-    hero.update = function() {
+    hero.update = function(delta) {
         if (keysPressed["ArrowUp"]) {
-            this.moveUp();
+            this.moveUp(delta);
         }
         if (keysPressed["ArrowDown"]) {
-            this.moveDown();
+            this.moveDown(delta);
         }
         if (keysPressed["ArrowRight"]) {
-            this.moveRight();
+            this.moveRight(delta);
         }
         if (keysPressed["ArrowLeft"]) {
-            this.moveLeft();
+            this.moveLeft(delta);
         }
 
         if (keysPressed["ControlRight"]) {

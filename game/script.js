@@ -24,9 +24,13 @@ window.addEventListener('keyup', (event) => {
 
 const ctx = canvas.getContext('2d');
 
-const gameCycle = function() {
-    hero.update();
+let before = Date.now();
 
+const gameCycle = function() {
+    let now = Date.now();
+    let delta = now - before;
+
+    hero.update(delta);
     if (distanceBetweenTwoPoints(hero.x, monster.x, hero.y, monster.y) < hero.image.width / 2 + monster.image.width / 2) {
         score.wins++;
         hero.reset();
@@ -38,6 +42,8 @@ const gameCycle = function() {
     hero.render(ctx);
     monster.render(ctx);
     score.render(ctx);
+
+    before = now;
     window.requestAnimationFrame(gameCycle);
 }
 

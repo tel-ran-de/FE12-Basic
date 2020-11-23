@@ -17,31 +17,31 @@ GameObject.prototype.render = function(ctx) {
 
 const MovableGameObjectPrototype = {
     speed: 0,
-    moveUp: function () {
-        this.y = this.y - this.speed;
+    moveUp: function (time) {
+        this.y = this.y - this.speed * time;
         if (this.y < 0) {
             this.y = canvas.height - this.y;
         }
     },
-    moveDown: function () {
-        this.y = Math.abs(this.y % canvas.height + this.speed);
+    moveDown: function (time) {
+        this.y = Math.abs(this.y % canvas.height + this.speed * time);
     },
-    moveLeft: function () {
-        this.x =  this.x - this.speed;
+    moveLeft: function (time) {
+        this.x =  this.x - this.speed * time;
         if (this.x < 0) {
             this.x = canvas.width - this.x;
         }
     },
-    moveRight: function () {
-        this.x = Math.abs(this.x % canvas.width + this.speed);
+    moveRight: function (time) {
+        this.x = Math.abs(this.x % canvas.width + this.speed * time);
     },
-    speedUp: function() {
-        this.speed += 1;
+    speedUp: function () {
+        this.speed += 0.1;
         console.log(this.speed);
     },
-    speedDown: function() {
+    speedDown: function () {
         if (this.speed > 1)
-            this.speed -= 1;
+            this.speed -= 0.1;
         console.log(this.speed);
     }
 }
