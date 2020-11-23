@@ -117,8 +117,16 @@ window.addEventListener('keyup', (event) => {
 let winCount = 0;
 
 ctx.font = "32px Arial";
-ctx.fillStyle = "white";
+// ctx.fillStyle = "white";
 ctx.textAlign = "center";
+const grad = ctx.createLinearGradient(0, 0, canvas.width, 32);
+grad.addColorStop("0", "red");
+grad.addColorStop("1", "yellow");
+ctx.fillStyle  = grad;
+const textDraw = function () {
+    ctx.fillText("Win count: " + winCount, canvas.width / 2, hero.image.width / 2 + 10);
+}
+
 
 const gameCycle = function () {
     hero.update();
@@ -133,7 +141,7 @@ const gameCycle = function () {
     background.render(ctx);
     hero.render(ctx);
     monster.render(ctx);
-    ctx.fillText("Win count: " + winCount, canvas.width / 2, hero.image.width / 2 + 10);
+    textDraw();
     window.requestAnimationFrame(gameCycle);
 }
 
