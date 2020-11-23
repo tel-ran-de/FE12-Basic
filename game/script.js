@@ -9,7 +9,7 @@ function GameObject(imageUrl) {
     }
 }
 
-GameObject.prototype.render = function(ctx) {
+GameObject.prototype.render = function (ctx) {
     if (this.ready) {
         ctx.drawImage(this.image, this.x, this.y);
     }
@@ -25,7 +25,7 @@ canvas.width = 512;
 canvas.height = 480;
 document.body.appendChild(canvas);
 
-const startPosition = function (){
+const startPosition = function () {
     hero.x = canvas.width / 2;
     hero.y = canvas.height / 2;
 
@@ -47,7 +47,7 @@ const MovableGameObjectPrototype = {
         this.y = Math.abs(this.y % canvas.height + this.speed);
     },
     moveLeft: function () {
-        this.x =  this.x - this.speed;
+        this.x = this.x - this.speed;
         if (this.x < 0) {
             this.x = canvas.width - this.x;
         }
@@ -55,16 +55,16 @@ const MovableGameObjectPrototype = {
     moveRight: function () {
         this.x = Math.abs(this.x % canvas.width + this.speed);
     },
-    speedUp: function() {
+    speedUp: function () {
         this.speed += 1;
         console.log(this.speed);
     },
-    speedDown: function() {
+    speedDown: function () {
         if (this.speed > 1)
             this.speed -= 1;
         console.log(this.speed);
     },
-    updatePosition: function() {
+    updatePosition: function () {
         if (keysPressed["ArrowUp"]) {
             hero.moveUp();
         }
@@ -93,7 +93,7 @@ Object.assign(hero, MovableGameObjectPrototype);
 
 const distanceBetweenTwoPoints = (x1, x2, y1, y2) => Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
 
-hero.update = function() {
+hero.update = function () {
     hero.updatePosition();
     hero.updateSpeed();
 }
@@ -102,8 +102,7 @@ hero.speed = 1;
 
 const ctx = canvas.getContext('2d');
 
-const a = {
-}
+const a = {}
 
 window.addEventListener('keydown', (event) => {
     keysPressed[event.key] = true;
@@ -117,7 +116,7 @@ window.addEventListener('keyup', (event) => {
 
 let winCount = 0;
 
-const gameCycle = function() {
+const gameCycle = function () {
     hero.update();
 
     if (distanceBetweenTwoPoints(hero.x, monster.x, hero.y, monster.y) < hero.image.width / 2 + monster.image.width / 2) {
