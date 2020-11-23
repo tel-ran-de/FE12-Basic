@@ -25,8 +25,12 @@ canvas.width = 512;
 canvas.height = 480;
 document.body.appendChild(canvas);
 
-hero.x = canvas.width / 2;
-hero.y = canvas.height / 2;
+hero.getStarted = function (){
+    hero.x = canvas.width / 2;
+    hero.y = canvas.height / 2;
+}
+
+hero.getStarted();
 
 const MovableGameObjectPrototype = {
     speed: 0,
@@ -91,13 +95,20 @@ hero.update = function() {
 }
 hero.speed = 1;
 
-monster.x = monster.image.width + Math.random() * (canvas.width - 3 * monster.image.width);
-monster.y = monster.image.height + Math.random() * (canvas.height - 3 * monster.image.height);
+monster.move = function (){
+    monster.x = monster.image.width + Math.random() * (canvas.width - 3 * monster.image.width);
+    monster.y = monster.image.height + Math.random() * (canvas.height - 3 * monster.image.height);
+}
+
+Object.assign(monster, MovableGameObjectPrototype);
+
+monster.move();
+
+monster.escape = function (){
+    //monster.
+}
 
 const ctx = canvas.getContext('2d');
-
-const a = {
-}
 
 window.addEventListener('keydown', (event) => {
     keysPressed[event.key] = true;
@@ -110,10 +121,17 @@ window.addEventListener('keyup', (event) => {
 });
 
 const gameCycle = function() {
+    let winsOfHero = 0;
     hero.update();
 
     if (distanceBetweenTwoPoints(hero.x, monster.x, hero.y, monster.y) < hero.image.width / 2 + monster.image.width / 2) {
         console.log("Hero caught monster!!!")
+        winsOfHero++;
+    }
+
+    if (winsOfHero > 0){
+        hero.getStarted();
+        monster.move();
     }
 
     background.render(ctx);
