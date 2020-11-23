@@ -104,10 +104,6 @@ Object.assign(monster, MovableGameObjectPrototype);
 
 monster.move();
 
-monster.escape = function (){
-    //monster.
-}
-
 const ctx = canvas.getContext('2d');
 
 window.addEventListener('keydown', (event) => {
