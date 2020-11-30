@@ -5,8 +5,12 @@ document.body.appendChild(canvas);
 
 const background = new GameObject('images/background.png');
 const hero = createHero('images/hero.png', canvas);
-const monster = createMonster('images/monster.png', canvas);
+const monsters = [];
+const monster1 = createMonster('images/monster.png', canvas);
 const monster2 = createMonster('images/monster.png', canvas);
+monsters.push(monster1);
+monsters.push(monster2);
+
 const score = createScore();
 
 const distanceBetweenTwoPoints = (x1, x2, y1, y2) => Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
@@ -32,31 +36,27 @@ const gameCycle = function() {
     let delta = now - before;
 
     hero.update(delta);
-    if (distanceBetweenTwoPoints(hero.x, monster.x, hero.y, monster.y) < hero.image.width / 2 + monster.image.width / 2) {
-        score.wins++;
-        hero.reset();
-        monster.reset();
-        console.log("Hero caught monster!!!")
+
+    for (let monster of monsters) {
+        console.log(monster);
+        if (distanceBetweenTwoPoints(hero.x, monster.x, hero.y, monster.y) < hero.image.width / 2 + monster.image.width / 2) {
+            score.wins++;
+            hero.reset();
+            monster.reset();
+            console.log("Hero caught monster!!!")
+        }
+
+        monster.update(delta);
     }
+        background.render(ctx);
+        hero.render(ctx);
+        for (let monster of monsters) {
+            monster.render(ctx);
+        }
+        score.render(ctx);
 
-    if (distanceBetweenTwoPoints(hero.x, monster2.x, hero.y, monster2.y) < hero.image.width / 2 + monster2.image.width / 2) {
-        score.wins++;
-        hero.reset();
-        monster2.reset();
-        console.log("Hero caught monster!!!")
-    }
-
-    monster.update(delta);
-    monster2.update(delta);
-
-    background.render(ctx);
-    hero.render(ctx);
-    monster.render(ctx);
-    monster2.render(ctx);
-    score.render(ctx);
-
-    before = now;
-    window.requestAnimationFrame(gameCycle);
+        before = now;
+        window.requestAnimationFrame(gameCycle);
 }
 
 window.requestAnimationFrame(gameCycle);
