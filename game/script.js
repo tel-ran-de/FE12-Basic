@@ -26,7 +26,7 @@ const ctx = canvas.getContext('2d');
 
 let before = Date.now();
 
-const gameCycle = function() {
+const gameCycle = function () {
     let now = Date.now();
     let delta = now - before;
 
@@ -38,7 +38,6 @@ const gameCycle = function() {
         console.log("Hero caught monster!!!")
     }
     monster.update(delta);
-
     background.render(ctx);
     hero.render(ctx);
     monster.render(ctx);

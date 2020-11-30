@@ -9,6 +9,9 @@ function GameObject(imageUrl) {
     }
 }
 
+GameObject.prototype.randomMonsterDelta=0;
+GameObject.prototype.randomDirection=1;
+
 GameObject.prototype.render = function(ctx) {
     if (this.ready) {
         ctx.drawImage(this.image, this.x, this.y);
@@ -45,4 +48,3 @@ const MovableGameObjectPrototype = {
         console.log(this.speed);
     }
 }
-
