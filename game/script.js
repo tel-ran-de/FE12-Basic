@@ -37,7 +37,8 @@ const gameCycle = function() {
         monster.reset();
         console.log("Hero caught monster!!!")
     }
-    monster.update(delta);
+
+    monster.update(monster.movingTime());
 
     background.render(ctx);
     hero.render(ctx);
