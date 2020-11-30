@@ -38,7 +38,16 @@ const gameCycle = function() {
         monster.reset();
         console.log("Hero caught monster!!!")
     }
+
+    if (distanceBetweenTwoPoints(hero.x, monster2.x, hero.y, monster2.y) < hero.image.width / 2 + monster2.image.width / 2) {
+        score.wins++;
+        hero.reset();
+        monster2.reset();
+        console.log("Hero caught monster!!!")
+    }
+
     monster.update(delta);
+    monster2.update(delta);
 
     if (distanceBetweenTwoPoints(hero.x, monster2.x, hero.y, monster2.y) < hero.image.width / 2 + monster.image.width / 2) {
         score.wins++;
