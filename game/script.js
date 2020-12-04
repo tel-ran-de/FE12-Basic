@@ -1,4 +1,5 @@
 const numberOfMonsters = 5;
+let isEnd = false;
 
 const canvas = document.createElement('canvas');
 canvas.width = 512;
@@ -8,6 +9,7 @@ document.body.appendChild(canvas);
 const background = new GameObject('images/background.png');
 const hero = createHero('images/hero.png', canvas);
 const score = createScore();
+//const finish = createFinish();
 
 const monsters = [];
 for (let i = 0; i < numberOfMonsters; i++) {
@@ -29,12 +31,30 @@ window.addEventListener('keyup', (event) => {
 });
 
 const ctx = canvas.getContext('2d');
+let countTime = function () {
+
+    if (score.time <= 0) {
+        clearInterval(countTime());
+        score.gameTime = 0;
+        hero.ready = false;
+        monsters.forEach(monster => monster.ready = false);
+        isEnd = true;
+        return
+
+    }
+    score.time -= 1;
+}
+setInterval(countTime, 1000);
 
 let before = Date.now();
 
-const gameCycle = function() {
+const gameCycle = function () {
     let now = Date.now();
     let delta = now - before;
+
+    if (isEnd){
+        return;
+    }
 
     hero.update(delta);
 
