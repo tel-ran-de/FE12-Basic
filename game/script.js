@@ -1,3 +1,4 @@
+const numberOfMonsters = 2;
 const canvas = document.createElement('canvas');
 canvas.width = 512;
 canvas.height = 480;
@@ -5,9 +6,12 @@ document.body.appendChild(canvas);
 
 const background = new GameObject('images/background.png');
 const hero = createHero('images/hero.png', canvas);
-const monster = createMonster('images/monster.png', canvas);
-const monster1 = createMonster('images/monster.png', canvas);
 const score = createScore();
+
+const monsters = [];
+for (let i = 0; i < numberOfMonsters; i++) {
+    monsters.push(createMonster('images/monster.png', canvas));
+}
 
 const distanceBetweenTwoPoints = (x1, x2, y1, y2) => Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
 
@@ -32,21 +36,20 @@ const gameCycle = function() {
     let delta = now - before;
 
     hero.update(delta);
-    if ((distanceBetweenTwoPoints(hero.x, monster.x, hero.y, monster.y) < hero.image.width / 2 + monster.image.width / 2)
-    ||(distanceBetweenTwoPoints(hero.x, monster1.x, hero.y, monster1.y) < hero.image.width / 2 + monster1.image.width / 2)) {
-        score.wins++;
-        hero.reset();
-        monster1.reset();
-        monster.reset();
-        console.log("Hero caught monster!!!")
-    }
-    monster.update(delta);
-    monster1.update(delta);
+
+    monsters.forEach(monster => {
+        if (distanceBetweenTwoPoints(hero.x, monster.x, hero.y, monster.y) < hero.image.width / 2 + monster.image.width / 2) {
+            score.wins++;
+            hero.reset();
+            monster.reset();
+            console.log("Hero caught monster!!!")
+        }
+        monster.update(delta);
+    })
 
     background.render(ctx);
     hero.render(ctx);
-    monster.render(ctx);
-    monster1.render(ctx);
+    monsters.forEach(monster => monster.render(ctx));
     score.render(ctx);
 
     before = now;
