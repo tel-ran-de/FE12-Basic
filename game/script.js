@@ -7,7 +7,7 @@ document.body.appendChild(canvas);
 
 const background = new GameObject('images/background.png');
 const hero = createHero('images/hero.png', canvas);
-const score = createScore(5000);
+const score = createScore();
 
 const monsters = [];
 for (let i = 0; i < numberOfMonsters; i++) {
@@ -35,9 +35,9 @@ let before = Date.now();
 const gameCycle = function () {
     let now = Date.now();
     let delta = now - before;
-    score.update(delta);
 
-    if (!score.isGameOver) {
+    if (!gameStop) {
+        score.update(delta);
         hero.update(delta);
 
         monsters.forEach(monster => {
@@ -45,11 +45,11 @@ const gameCycle = function () {
                 score.wins++;
                 hero.reset();
                 monster.reset();
+                console.log("Hero caught monster!!!")
             }
             monster.update(delta);
         })
     }
-
     background.render(ctx);
     hero.render(ctx);
     monsters.forEach(monster => monster.render(ctx));

@@ -1,23 +1,22 @@
-function createScore(time) {
+const gameTime = 5 * 1000; //ms
+let gameStop = false;
+
+function createScore() {
     const score = new GameObject();
-    const timeOfGame = time;
     score.x = 32;
     score.y = 32;
     score.wins = 0;
-    score.timeToEnd = timeOfGame;
-    score.isGameOver = false;
-
+    score.time = gameTime; // seconds
     score.update = function (delta) {
-        if (this.timeToEnd <= 0) {
-            this.isGameOver = true;
-            this.timeToEnd = 0;
+        if (this.time > 0) {
+            gameStop = false;
+            this.time -= delta;
+            score.render(ctx);
+            // console.log(this.time / 1000);
         } else {
-            this.timeToEnd -= delta;
-        }
+            gameStop = true;
+            this.time = 0;
 
-        if (keysPressed["Space"]){
-            this.isGameOver = false;
-            this.timeToEnd = timeOfGame;
         }
     }
 
@@ -26,13 +25,20 @@ function createScore(time) {
         ctx.font = "24px Helvetica";
         ctx.textAlign = "left";
         ctx.textBaseline = "top";
-        if (this.isGameOver) {
-            ctx.fillText("The game is over! Your score is: " + this.wins, this.x + 50, this.y + 150);
-            ctx.fillText("If you want to play again, press Space", this.x + 30, this.y + 200);
-        }
-        else {
+        ctx.fillText("Monsters caught:" + this.wins, this.x, this.y);
+        // ctx.textAlign = "right" ;
+        ctx.fillStyle = "red";
+        ctx.fillText("Time: " + Math.floor(this.time / 1000), this.x * 10, this.y);
+        if (!gameStop){
+            ctx.fillStyle = "white";
             ctx.fillText("Monsters caught:" + this.wins, this.x, this.y);
-            ctx.fillText("Seconds left: " + Math.floor(this.timeToEnd / 1000), this.x + 250, this.y);
+            ctx.fillStyle = "red";
+            ctx.fillText("Time: " + Math.floor(this.time / 1000), this.x * 10, this.y);
+        } else{
+            ctx.textAlign = "center";
+            ctx.fillStyle = "yellow";
+            ctx.fillText("Game is over! Monsters caught: " + this.wins, canvas.width/2, canvas.height/2);
+
         }
     }
     return score;
