@@ -15,7 +15,7 @@ function createScore(time) {
             this.timeToEnd -= delta;
         }
 
-        if (keysPressed["Space"]){
+        if (keysPressed["Space"]) {
             this.isGameOver = false;
             this.timeToEnd = timeOfGame;
         }
@@ -27,11 +27,14 @@ function createScore(time) {
         ctx.textAlign = "left";
         ctx.textBaseline = "top";
         if (this.isGameOver) {
-            ctx.fillText("The game is over! Your score is: " + this.wins, this.x + 50, this.y + 150);
-            ctx.fillText("If you want to play again, press Space", this.x + 30, this.y + 200);
-        }
-        else {
+            ctx.textAlign = "center";
+            ctx.fillStyle = "yellow";
+            ctx.fillText("The game is over! Your score is: " + this.wins, canvas.width / 2, canvas.height / 2);
+            ctx.fillText("If you want to play again, press Space", canvas.width / 2, canvas.height / 2 + this.y);
+        } else {
+            ctx.fillStyle = "white";
             ctx.fillText("Monsters caught:" + this.wins, this.x, this.y);
+            ctx.fillStyle = "red";
             ctx.fillText("Seconds left: " + Math.floor(this.timeToEnd / 1000), this.x + 250, this.y);
         }
     }
