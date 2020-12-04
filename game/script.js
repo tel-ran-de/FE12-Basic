@@ -1,4 +1,5 @@
 const numberOfMonsters = 5;
+const gameTime = 30 // seconds
 
 const canvas = document.createElement('canvas');
 canvas.width = 512;
@@ -7,7 +8,7 @@ document.body.appendChild(canvas);
 
 const background = new GameObject('images/background.png');
 const hero = createHero('images/hero.png', canvas);
-const score = createScore();
+const score = createScore(gameTime);
 
 const monsters = [];
 for (let i = 0; i < numberOfMonsters; i++) {
@@ -37,6 +38,7 @@ const gameCycle = function() {
     let delta = now - before;
 
     hero.update(delta);
+    score.update(delta);
 
     monsters.forEach(monster => {
         if (distanceBetweenTwoPoints(hero.x, monster.x, hero.y, monster.y) < hero.image.width / 2 + monster.image.width / 2) {
