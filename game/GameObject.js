@@ -3,6 +3,7 @@ function GameObject(imageUrl) {
     this.y = 0;
     this.ready = false;
     this.image = new Image();
+    this.gameTime = 30;
     this.image.onload = () => this.ready = true;
     if (imageUrl) {
         this.image.src = imageUrl;
