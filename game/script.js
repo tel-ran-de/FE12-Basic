@@ -5,8 +5,8 @@ canvas.width = 512;
 canvas.height = 480;
 document.body.appendChild(canvas);
 
-const background = new GameObject('images/background.png');
-const hero = createHero('images/hero.png', canvas);
+const background = new GameObjectClass('images/background.png');
+const hero = new Hero('images/hero.png', canvas);
 const score = createScore(5000);
 
 const monsters = [];
