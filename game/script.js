@@ -31,6 +31,20 @@ window.addEventListener('keyup', (event) => {
 const ctx = canvas.getContext('2d');
 
 let before = Date.now();
+let gameOver = false;
+
+let timeCounter = function () {
+    score.gameTime += -1;
+    if (score.gameTime <= 0) {
+        clearInterval(timeCounter);
+        gameOver = true;
+        hero.ready = false;
+        monsters.forEach(monster => monster.ready = false);
+        score.gameTime = 0;
+    }
+}
+
+setInterval(timeCounter, 1000);
 
 const gameCycle = function() {
     let now = Date.now();
@@ -39,7 +53,7 @@ const gameCycle = function() {
     hero.update(delta);
 
     monsters.forEach(monster => {
-        if (distanceBetweenTwoPoints(hero.x, monster.x, hero.y, monster.y) < hero.image.width / 2 + monster.image.width / 2) {
+        if (distanceBetweenTwoPoints(hero.x, monster.x, hero.y, monster.y) < hero.image.width / 2 + monster.image.width / 2 && !gameOver) {
             score.wins++;
             hero.reset();
             monster.reset();
@@ -58,3 +72,5 @@ const gameCycle = function() {
 }
 
 window.requestAnimationFrame(gameCycle);
+timeCounter();
+
