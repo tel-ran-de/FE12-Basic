@@ -32,21 +32,23 @@ const ctx = canvas.getContext('2d');
 
 let before = Date.now();
 
-const gameCycle = function() {
+const gameCycle = function () {
     let now = Date.now();
     let delta = now - before;
 
-    hero.update(delta);
+    if (!score.isGameOver) {
+        score.update(delta);
+        hero.update(delta);
 
-    monsters.forEach(monster => {
-        if (distanceBetweenTwoPoints(hero.x, monster.x, hero.y, monster.y) < hero.image.width / 2 + monster.image.width / 2) {
-            score.wins++;
-            hero.reset();
-            monster.reset();
-            console.log("Hero caught monster!!!")
-        }
-        monster.update(delta);
-    })
+        monsters.forEach(monster => {
+            if (distanceBetweenTwoPoints(hero.x, monster.x, hero.y, monster.y) < hero.image.width / 2 + monster.image.width / 2) {
+                score.wins++;
+                hero.reset();
+                monster.reset();
+            }
+            monster.update(delta);
+        })
+    }
 
     background.render(ctx);
     hero.render(ctx);

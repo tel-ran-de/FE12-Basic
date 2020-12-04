@@ -3,13 +3,30 @@ function createScore() {
     score.x = 32;
     score.y = 32;
     score.wins = 0;
+    score.timeToEnd = 5000;
+    score.isGameOver = false;
 
-    score.render = function(ctx) {
+    score.update = function (delta) {
+        if (this.timeToEnd <= 0) {
+            this.isGameOver = true;
+            this.timeToEnd = 0;
+        } else {
+            this.timeToEnd -= delta;
+        }
+    }
+
+    score.render = function (ctx) {
         ctx.fillStyle = "rgb(250, 250, 250)";
         ctx.font = "24px Helvetica";
         ctx.textAlign = "left";
         ctx.textBaseline = "top";
-        ctx.fillText("Monsters caught:" + this.wins, this.x, this.y);
+        if (this.isGameOver) {
+            ctx.fillText("The game is over! Your score is: " + this.wins, this.x + 50, this.y + 150);
+        }
+        else {
+            ctx.fillText("Monsters caught:" + this.wins, this.x, this.y);
+            ctx.fillText("Seconds left: " + Math.floor(this.timeToEnd / 1000), this.x + 250, this.y);
+        }
     }
     return score;
 }
