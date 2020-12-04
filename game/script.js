@@ -36,7 +36,7 @@ const gameCycle = function () {
     let now = Date.now();
     let delta = now - before;
 
-    if (!gameStop) {
+    if (!score.isGameOver) {
         score.update(delta);
         hero.update(delta);
 
@@ -45,11 +45,11 @@ const gameCycle = function () {
                 score.wins++;
                 hero.reset();
                 monster.reset();
-                console.log("Hero caught monster!!!")
             }
             monster.update(delta);
         })
     }
+
     background.render(ctx);
     hero.render(ctx);
     monsters.forEach(monster => monster.render(ctx));
