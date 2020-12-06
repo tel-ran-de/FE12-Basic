@@ -21,6 +21,7 @@ class Score{
 
         if (keysPressed["Space"]){
             this.isGameOver = false;
+            this.wins = 0;
             this.#timeToEnd = this.#timeOfGame;
         }
     }
