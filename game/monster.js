@@ -1,20 +1,23 @@
-function createMonster(imageUrl, canvas) {
-    const monster = new GameObject(imageUrl);
+class Monster extends MovableGameObject {
+    #canvasWidth;
+    #canvasHeight;
 
-    Object.assign(monster, MovableGameObjectPrototype);
-
-    monster.direction = 0;
-    monster.movingTime = 0;
-
-    monster.reset = function() {
-        this.x = this.image.width + Math.random() * (canvas.width - 3 * this.image.width);
-        this.y = this.image.height + Math.random() * (canvas.height - 3 * this.image.height);
+    constructor(imageUrl, canvas) {
+        super(imageUrl);
+        this.#canvasWidth = canvas.width;
+        this.#canvasHeight = canvas.height;
+        this.direction = 0;
+        this.movingTime = 0;
+        this.reset();
     }
 
-    monster.reset();
+    reset() {
+        this.x = this.image.width + Math.random() * (this.#canvasWidth - 3 * this.image.width);
+        this.y = this.image.height + Math.random() * (this.#canvasHeight - 3 * this.image.height);
+    }
 
-    monster.update = function (delta) {
-        if (this.movingTime <=0) {
+    update(delta) {
+        if (this.movingTime <= 0) {
             this.movingTime = Math.floor(Math.random() * 1000) + 100;
             this.speed = Math.round(Math.random() * 5 + 0.05) * 0.1;
             this.direction = Math.floor(Math.random() * 4 + 1);
@@ -29,6 +32,4 @@ function createMonster(imageUrl, canvas) {
 
         this.movingTime -= delta;
     }
-
-    return monster;
 }
