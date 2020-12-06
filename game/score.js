@@ -14,9 +14,9 @@ function createScore(time) {
         } else {
             this.timeToEnd -= delta;
         }
-
         if (keysPressed["Space"]){
             this.isGameOver = false;
+            this.wins = 0;
             this.timeToEnd = timeOfGame;
         }
     }
