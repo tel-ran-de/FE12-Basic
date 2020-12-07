@@ -1,4 +1,4 @@
-const numberOfMonsters = 5;
+const numberOfMonsters = 8;
 
 const canvas = document.createElement('canvas');
 canvas.width = 512;
@@ -7,11 +7,11 @@ document.body.appendChild(canvas);
 
 const background = new GameObjectClass('images/background.png');
 const hero = new Hero('images/hero.png', canvas);
-const score = createScore(5000);
+const score = new Score(50000);
 
 const monsters = [];
 for (let i = 0; i < numberOfMonsters; i++) {
-    monsters.push(createMonster('images/monster.png', canvas));
+    monsters.push(new Monster('images/monster.png', canvas));
 }
 
 const distanceBetweenTwoPoints = (x1, x2, y1, y2) => Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));

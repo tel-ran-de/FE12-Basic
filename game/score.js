@@ -1,13 +1,17 @@
-function createScore(time) {
-    const score = new GameObject();
-    const timeOfGame = time;
-    score.x = 32;
-    score.y = 32;
-    score.wins = 0;
-    score.timeToEnd = timeOfGame;
-    score.isGameOver = false;
+class Score {
 
-    score.update = function (delta) {
+    score = new GameObject();
+    timeOfGame;
+
+    constructor (time) {
+        this.score.x = 32;
+        this.score.y = 32;
+        this.score.wins = 0;
+        this.score.timeToEnd = this.timeOfGame;
+        this.score.isGameOver = false;
+}
+
+    update (delta) {
         if (this.timeToEnd <= 0) {
             this.isGameOver = true;
             this.timeToEnd = 0;
@@ -17,23 +21,22 @@ function createScore(time) {
 
         if (keysPressed["Space"]){
             this.isGameOver = false;
-            this.timeToEnd = timeOfGame;
+            this.timeToEnd = this.timeOfGame;
         }
     }
 
-    score.render = function (ctx) {
-        ctx.fillStyle = "rgb(250, 250, 250)";
+    render (ctx) {
+        ctx.fillStyle = "rgb(62,49,5)";
         ctx.font = "24px Helvetica";
         ctx.textAlign = "left";
         ctx.textBaseline = "top";
         if (this.isGameOver) {
-            ctx.fillText("The game is over! Your score is: " + this.wins, this.x + 50, this.y + 150);
-            ctx.fillText("If you want to play again, press Space", this.x + 30, this.y + 200);
+            ctx.fillText("The game is over! Your score is: " + this.score.wins, this.score.x + 50, this.score.y + 150);
+            ctx.fillText("If you want to play again, press Space", this.score.x + 30, this.score.y + 200);
         }
         else {
-            ctx.fillText("Monsters caught:" + this.wins, this.x, this.y);
-            ctx.fillText("Seconds left: " + Math.floor(this.timeToEnd / 1000), this.x + 250, this.y);
+            ctx.fillText("Monsters caught:" + this.score.wins, this.score.x, this.score.y);
+            ctx.fillText("Seconds left: " + Math.floor(this.timeToEnd / 1000), this.score.x + 250, this.score.y);
         }
     }
-    return score;
 }
