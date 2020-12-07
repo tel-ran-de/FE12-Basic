@@ -23,7 +23,7 @@ class Score{
             this.isGameOver = false;
             this.#timeToEnd = this.#timeOfGame;
             this.wins = 0;
-            monsters.forEach(monster => monster.reset());
+            // monsters.forEach(monster => monster.reset());
         }
     }
 
