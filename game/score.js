@@ -3,7 +3,6 @@ class Score extends GameObject{
     #timeOfGame;
     #timeToEnd;
     #isGameOver;
-    keysPressed = {};
 
     constructor(time) {
         super();
@@ -19,7 +18,8 @@ class Score extends GameObject{
         return this.#isGameOver;
     }
 
-    update(delta) {
+    update(delta, keysPressed) {
+        // console.log(keysPressed);
         if (this.#timeToEnd <= 0) {
             this.#isGameOver = true;
             this.#timeToEnd = 0;
@@ -27,7 +27,7 @@ class Score extends GameObject{
             this.#timeToEnd -= delta;
         }
 
-        if (this.keysPressed["Space"]){
+        if (keysPressed["Space"]){
             this.#isGameOver = false;
             this.#timeToEnd = this.#timeOfGame;
             this.wins = 0;

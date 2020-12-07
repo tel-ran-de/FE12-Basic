@@ -5,7 +5,7 @@ class Game {
     ctx;
     before;
     now;
-    keysPressed ={};
+    keysPressed = {};
 
     constructor(canvas, numberOfMonsters = 5) {
         this.canvas = canvas;
@@ -18,10 +18,7 @@ class Game {
         for (let i = 0; i < numberOfMonsters; i++) {
             this.monsters.push(new Monster('images/monster.png', canvas));
         }
-    }
 
-    start() {
-        this.before = Date.now();
         window.addEventListener('keydown', (event) => {
             (this.keysPressed)[event.key] = true;
             this.keysPressed[event.code] = true;
@@ -32,6 +29,12 @@ class Game {
             this.keysPressed[event.code] = false;
         });
         window.requestAnimationFrame(this.gameCycle);
+        console.log(this.keysPressed);
+    }
+
+    start() {
+        this.before = Date.now();
+        window.requestAnimationFrame(this.gameCycle);
     }
 
     distanceBetweenTwoPoints = (x1, x2, y1, y2) => Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
@@ -41,10 +44,10 @@ class Game {
 
         let delta = this.now - this.before;
 
-        this.score.update(delta);
+        this.score.update(delta, this.keysPressed);
 
         if (!this.score.isGameOver) {
-            this.hero.update(delta);
+            this.hero.update(delta, this.keysPressed);
 
             this.monsters.forEach(monster => {
                 if (this.distanceBetweenTwoPoints(this.hero.x, monster.x, this.hero.y, monster.y) < this.hero.image.width / 2 + monster.image.width / 2) {
