@@ -1,27 +1,39 @@
-function createScore(time) {
-    const score = new GameObject();
-    const timeOfGame = time;
-    score.x = 32;
-    score.y = 32;
-    score.wins = 0;
-    score.timeToEnd = timeOfGame;
-    score.isGameOver = false;
+class Score extends GameObject{
 
-    score.update = function (delta) {
-        if (this.timeToEnd <= 0) {
-            this.isGameOver = true;
-            this.timeToEnd = 0;
+    #timeOfGame;
+    #timeToEnd;
+    #isGameOver;
+
+    constructor(time) {
+        super();
+        this.#timeOfGame = time;
+        this.x = 32;
+        this.y = 32;
+        this.wins = 0;
+        this.#timeToEnd = this.#timeOfGame;
+        this.#isGameOver = false;
+    }
+
+    get isGameOver() {
+        return this.#isGameOver;
+    }
+
+    update(delta) {
+        if (this.#timeToEnd <= 0) {
+            this.#isGameOver = true;
+            this.#timeToEnd = 0;
         } else {
-            this.timeToEnd -= delta;
+            this.#timeToEnd -= delta;
         }
 
         if (keysPressed["Space"]){
-            this.isGameOver = false;
-            this.timeToEnd = timeOfGame;
+            this.#isGameOver = false;
+            this.#timeToEnd = this.#timeOfGame;
+            this.wins = 0;
         }
     }
 
-    score.render = function (ctx) {
+    render(ctx) {
         ctx.fillStyle = "rgb(250, 250, 250)";
         ctx.font = "24px Helvetica";
         ctx.textAlign = "left";
@@ -32,8 +44,7 @@ function createScore(time) {
         }
         else {
             ctx.fillText("Monsters caught:" + this.wins, this.x, this.y);
-            ctx.fillText("Seconds left: " + Math.floor(this.timeToEnd / 1000), this.x + 250, this.y);
+            ctx.fillText("Seconds left: " + Math.floor(this.#timeToEnd / 1000), this.x + 250, this.y);
         }
     }
-    return score;
 }
