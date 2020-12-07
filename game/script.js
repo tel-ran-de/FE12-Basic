@@ -32,10 +32,21 @@ const ctx = canvas.getContext('2d');
 
 let before = Date.now();
 
+let isGameOver = false;
+let timeToEnd = 30*1000;
+
 const gameCycle = function() {
     let now = Date.now();
     let delta = now - before;
 
+    if(timeToEnd <= 0) {
+        isGameOver = true;
+//        console.log("game is over")
+    }
+
+    if (!isGameOver) {
+    timeToEnd -= delta;
+    console.log("Time to the end of game: " + timeToEnd);
     hero.update(delta);
 
     monsters.forEach(monster => {
@@ -47,6 +58,8 @@ const gameCycle = function() {
         }
         monster.update(delta);
     })
+
+    }
 
     background.render(ctx);
     hero.render(ctx);
