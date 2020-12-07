@@ -12,23 +12,23 @@ class Hero extends MovableGameObject {
     }
 
     update(delta) {
-        if (game.keysPressed["ArrowUp"]) {
+        if (this.keysPressed["ArrowUp"]) {
             this.moveUp(delta);
         }
-        if (game.keysPressed["ArrowDown"]) {
+        if (this.keysPressed["ArrowDown"]) {
             this.moveDown(delta);
         }
-        if (game.keysPressed["ArrowRight"]) {
+        if (this.keysPressed["ArrowRight"]) {
             this.moveRight(delta);
         }
-        if (game.keysPressed["ArrowLeft"]) {
+        if (this.keysPressed["ArrowLeft"]) {
             this.moveLeft(delta);
         }
 
-        if (game.keysPressed["ControlRight"]) {
+        if (this.keysPressed["ControlRight"]) {
             this.speedUp();
         }
-        if (game.keysPressed["ControlLeft"]) {
+        if (this.keysPressed["ControlLeft"]) {
             this.speedDown();
         }
     }

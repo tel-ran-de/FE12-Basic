@@ -5,7 +5,7 @@ class Game {
     ctx;
     before;
     now;
-    keysPressed = {};
+
 
     constructor(canvas, numberOfMonsters = 5) {
         this.canvas = canvas;
@@ -18,15 +18,7 @@ class Game {
         for (let i = 0; i < numberOfMonsters; i++) {
             this.monsters.push(new Monster('images/monster.png', canvas));
         }
-        window.addEventListener('keydown', (event) => {
-            this.keysPressed[event.key] = true;
-            this.keysPressed[event.code] = true;
-        });
 
-        window.addEventListener('keyup', (event) => {
-            this.keysPressed[event.key] = false;
-            this.keysPressed[event.code] = false;
-        });
     }
 
     start() {

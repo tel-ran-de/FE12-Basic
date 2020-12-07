@@ -1,4 +1,6 @@
 class GameObject {
+    keysPressed = {};
+
     constructor(imageUrl) {
         this.x = 0;
         this.y = 0;
@@ -8,6 +10,16 @@ class GameObject {
         if (imageUrl) {
             this.image.src = imageUrl;
         }
+
+        window.addEventListener('keydown', (event) => {
+            this.keysPressed[event.key] = true;
+            this.keysPressed[event.code] = true;
+        });
+
+        window.addEventListener('keyup', (event) => {
+            this.keysPressed[event.key] = false;
+            this.keysPressed[event.code] = false;
+        });
     }
 
     render(ctx) {
