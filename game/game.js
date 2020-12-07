@@ -5,6 +5,7 @@ class Game {
     ctx;
     before;
     now;
+    keysPressed ={};
 
     constructor(canvas, numberOfMonsters = 5) {
         this.canvas = canvas;
@@ -21,6 +22,15 @@ class Game {
 
     start() {
         this.before = Date.now();
+        window.addEventListener('keydown', (event) => {
+            (this.keysPressed)[event.key] = true;
+            this.keysPressed[event.code] = true;
+        });
+
+        window.addEventListener('keyup', (event) => {
+            this.keysPressed[event.key] = false;
+            this.keysPressed[event.code] = false;
+        });
         window.requestAnimationFrame(this.gameCycle);
     }
 
@@ -30,15 +40,6 @@ class Game {
         this.now = Date.now();
 
         let delta = this.now - this.before;
-        window.addEventListener('keydown', (event) => {
-            keysPressed[event.key] = true;
-            keysPressed[event.code] = true;
-        });
-
-        window.addEventListener('keyup', (event) => {
-            keysPressed[event.key] = false;
-            keysPressed[event.code] = false;
-        });
 
         this.score.update(delta);
 

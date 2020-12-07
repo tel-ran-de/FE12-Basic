@@ -1,4 +1,5 @@
 class Hero extends MovableGameObject {
+    keysPressed = {};
 
     constructor(imageUrl, canvas) {
         super(imageUrl, canvas);
@@ -12,23 +13,23 @@ class Hero extends MovableGameObject {
     }
 
     update(delta) {
-        if (keysPressed["ArrowUp"]) {
+        if (this.keysPressed["ArrowUp"]) {
             this.moveUp(delta);
         }
-        if (keysPressed["ArrowDown"]) {
+        if (this.keysPressed["ArrowDown"]) {
             this.moveDown(delta);
         }
-        if (keysPressed["ArrowRight"]) {
+        if (this.keysPressed["ArrowRight"]) {
             this.moveRight(delta);
         }
-        if (keysPressed["ArrowLeft"]) {
+        if (this.keysPressed["ArrowLeft"]) {
             this.moveLeft(delta);
         }
 
-        if (keysPressed["ControlRight"]) {
+        if (this.keysPressed["ControlRight"]) {
             this.speedUp();
         }
-        if (keysPressed["ControlLeft"]) {
+        if (this.keysPressed["ControlLeft"]) {
             this.speedDown();
         }
     }
