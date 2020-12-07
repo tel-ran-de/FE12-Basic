@@ -18,7 +18,7 @@ class Score extends GameObject{
         return this.#isGameOver;
     }
 
-    update(delta) {
+    update(delta, keysPressed) {
         if (this.#timeToEnd <= 0) {
             this.#isGameOver = true;
             this.#timeToEnd = 0;
@@ -26,7 +26,7 @@ class Score extends GameObject{
             this.#timeToEnd -= delta;
         }
 
-        if (this.keysPressed["Space"]){
+        if (keysPressed["Space"]){
             this.#isGameOver = false;
             this.#timeToEnd = this.#timeOfGame;
             this.wins = 0;
