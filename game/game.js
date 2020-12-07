@@ -28,9 +28,8 @@ class Game {
 
     gameCycle = () => {
         this.now = Date.now();
-        let delta = this.now - this.before;
-        this.score.update(delta);
 
+        let delta = this.now - this.before;
         window.addEventListener('keydown', (event) => {
             keysPressed[event.key] = true;
             keysPressed[event.code] = true;
@@ -40,6 +39,8 @@ class Game {
             keysPressed[event.key] = false;
             keysPressed[event.code] = false;
         });
+
+        this.score.update(delta);
 
         if (!this.score.isGameOver) {
             this.hero.update(delta);
@@ -62,6 +63,4 @@ class Game {
         this.before = this.now;
         window.requestAnimationFrame(this.gameCycle);
     }
-
-
 }
