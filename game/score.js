@@ -26,7 +26,7 @@ class Score extends GameObject{
             this.#timeToEnd -= delta;
         }
 
-        if (keysPressed["Space"]){
+        if (game.keysPressed["Space"]){
             this.#isGameOver = false;
             this.#timeToEnd = this.#timeOfGame;
             this.wins = 0;
