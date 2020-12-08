@@ -1,4 +1,5 @@
 class Hero extends MovableGameObject {
+    keysPressed = {};
 
     constructor(imageUrl, canvas) {
         super(imageUrl, canvas);
@@ -11,7 +12,7 @@ class Hero extends MovableGameObject {
         this.speed = 0.1;
     }
 
-    update(delta) {
+    update(delta, keysPressed) {
         if (keysPressed["ArrowUp"]) {
             this.moveUp(delta);
         }
