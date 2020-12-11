@@ -1,6 +1,6 @@
 // ES5 closures
 for (var j = 1; j <=5; j++) {
-    document.getElementById('b' + j).onclick = function(i) {
+    document.getElementById('b' + j).onclick = function(j) {
         return function(event) {
             console.log('Button ' + j + ' clicked');
         }

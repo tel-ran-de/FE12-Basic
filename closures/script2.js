@@ -1,10 +1,7 @@
-var i = 0;
-for (var j = 1; j <=5; j++) {
-    document.getElementById('b' + j).onclick = function(j) {
-        return function(event) {
-            console.log('Button ' + j + ' clicked');
-            i++;
-            console.log('function was executed ' + i);
-        }
-    }(j)
-}
+let times = function (){
+    let counter = 1;
+    return function ()
+    {
+        console.log('function was executed ' + counter++);
+    }
+}()
