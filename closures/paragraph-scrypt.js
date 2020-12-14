@@ -1,8 +1,8 @@
 const color = ['red', 'blue', 'green'];
 
-for (let i = 1; i < color.length; i++) {
-    let $paragraph = document.getElementById('p' + i);
-    $paragraph.onclick = function (i) {
+let $paragraphs = document.getElementsByTagName('p');
+for (let i = 0; i < $paragraphs.length; i++) {
+    $paragraphs[i].onclick = function () {
         let n = 0;
         return function (event) {
             if (n < color.length) {
@@ -13,5 +13,5 @@ for (let i = 1; i < color.length; i++) {
             }
             n++;
         };
-    }(i);
+    }();
 }
