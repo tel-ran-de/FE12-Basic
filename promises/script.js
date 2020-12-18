@@ -39,8 +39,3 @@ promise
         paragraph.style.color = 'red';
     })
     .finally(() => console.log("Request is finished"));
-
-
-
-
-
