@@ -1,19 +1,20 @@
 const $p = document.getElementsByTagName('p')[0];
+counter = new CounterObject();
+counter.start();
 
-let i = 0;
-
-const handlerId = setInterval(() => {
-    i++;
-    $p.innerText = i;
-}, 1000); // replace with counter.start(interval)
-
-let result = false; // Generate randomly: 50% - true, 50% - false
-let delay = 5000; // Generate randomly: from 1000 to 5000 with 1000 step
-
-// counter object with two methods: counter.start, counter.stop
+let result = function () {
+    let randomNumber = Math.floor(Math.random() * (10 - 1)) + 1;
+    if (randomNumber < 6) {
+        return true;
+    } else {
+        return false;
+    }
+}
+let delay = (Math.floor(Math.random() * (5 - 1)) + 1) * 1000; // Generated randomly: from 1000 to 5000 with 1000 step
+console.log(delay);
 
 const promise = new Promise((resolve, reject) => {
-    if (result) {
+    if (result()) {
         setTimeout(() => {
             resolve('Hello');
         }, delay);
@@ -26,13 +27,13 @@ const promise = new Promise((resolve, reject) => {
 
 promise
     .then(response => {
-        clearInterval(handlerId); // replace with counter.stop()
+        counter.stop();
         $p.innerText = response;
-        // change text color to green
+        $p.style.color = "green";
     })
     .catch(reason => {
-        clearInterval(handlerId); // replace with counter.stop()
+        counter.stop();
         $p.innerText = reason;
-        // change text color to red
+        $p.style.color = "red";
     })
     .finally(() => console.log('Request is finished'));
