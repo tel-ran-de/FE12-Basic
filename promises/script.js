@@ -1,38 +1,41 @@
-const $p = document.getElementsByTagName('p')[0];
+const paragraph = document.getElementsByTagName('p')[0];
 
-let i = 0;
+const handlerId = new Counter(paragraph, 1000);
+handlerId.start();
 
-const handlerId = setInterval(() => {
-    i++;
-    $p.innerText = i;
-}, 1000); // replace with counter.start(interval)
+let dateForGenerator = new Date;
+let generator = function (){
+    return Math.floor(dateForGenerator.getMilliseconds() * Math.random() + 1);
+}
 
-let result = false; // Generate randomly: 50% - true, 50% - false
-let delay = 5000; // Generate randomly: from 1000 to 5000 with 1000 step
+let result = function (){
+    return generator() > 500;
+}
 
-// counter object with two methods: counter.start, counter.stop
+let delay = 5000;
 
 const promise = new Promise((resolve, reject) => {
-    if (result) {
+    let i = result();
+    if (i) {
         setTimeout(() => {
-            resolve('Hello');
+            resolve("Hello");
         }, delay);
     } else {
         setTimeout(() => {
-            reject('Error')
+            reject("Error")
         }, delay)
     }
 });
 
 promise
     .then(response => {
-        clearInterval(handlerId); // replace with counter.stop()
-        $p.innerText = response;
-        // change text color to green
+        handlerId.stop();
+        paragraph.innerText = response;
+        paragraph.style.color = 'green';
     })
     .catch(reason => {
-        clearInterval(handlerId); // replace with counter.stop()
-        $p.innerText = reason;
-        // change text color to red
+        handlerId.stop();
+        paragraph.innerText = reason;
+        paragraph.style.color = 'red';
     })
-    .finally(() => console.log('Request is finished'));
+    .finally(() => console.log("Request is finished"));
