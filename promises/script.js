@@ -1,18 +1,18 @@
 const $p = document.getElementsByTagName('p')[0];
 
-let counter = {
-
+const counter = {
+    handlerId: 0,
     start: function () {
         let i = 0;
         let interval = 1000;
-        return setInterval(() => {
+        this.handlerId = setInterval(() => {
             i++;
             $p.innerText = i;
         }, interval);
     },
 
     stop: function () {
-        clearInterval(this.start());
+        clearInterval(this.handlerId);
     }
 };
 
@@ -38,11 +38,13 @@ promise
         counter.stop();
         $p.innerText = response;
         $p.style.color = 'green';
+
     })
     .catch(reason => {
         counter.stop();
         $p.innerText = reason;
         $p.style.color = 'red';
+        console.log($p)
     })
     .finally(() => console.log('Request is finished'));
 
