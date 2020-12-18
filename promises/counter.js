@@ -1,24 +1,24 @@
 class Counter {
-    paragraph
+    elementToShowCounterIn
     counter = 0;
-    time
-    handler
+    interval
+    handlerId
 
-    constructor(elementToChange, time) {
-        this.paragraph = elementToChange;
-        this.time = time;
+    constructor(elementToShowCounterIn, interval) {
+        this.elementToShowCounterIn = elementToShowCounterIn;
+        this.interval = interval;
     }
 
     start() {
-        this.handler = setInterval(() => this.count(), this.time)
-    };
+        this.handlerId = setInterval(() => this.count(), this.interval)
+    }
 
     count() {
         this.counter++;
-        this.paragraph.innerText = this.counter + "";
+        this.elementToShowCounterIn.innerText = this.counter;
     }
 
     stop() {
-        clearInterval(this.handler);
+        clearInterval(this.handlerId);
     }
 }

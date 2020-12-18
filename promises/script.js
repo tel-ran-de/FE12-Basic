@@ -1,22 +1,13 @@
 const paragraph = document.getElementsByTagName('p')[0];
 
-const handlerId = new Counter(paragraph, 1000);
-handlerId.start();
+const counter = new Counter(paragraph, 1000);
 
-let dateForGenerator = new Date;
-let generator = function (){
-    return Math.floor(dateForGenerator.getMilliseconds() * Math.random() + 1);
-}
-
-let result = function (){
-    return generator() > 500;
-}
-
-let delay = 5000;
+let result = Math.random() < 0.5;
+let delay = 1000 + Math.round(Math.random() * 4000)
 
 const promise = new Promise((resolve, reject) => {
-    let i = result();
-    if (i) {
+    counter.start();
+    if (result) {
         setTimeout(() => {
             resolve("Hello");
         }, delay);
@@ -29,13 +20,14 @@ const promise = new Promise((resolve, reject) => {
 
 promise
     .then(response => {
-        handlerId.stop();
+        counter.stop();
         paragraph.innerText = response;
         paragraph.style.color = 'green';
     })
     .catch(reason => {
-        handlerId.stop();
+        counter.stop();
         paragraph.innerText = reason;
         paragraph.style.color = 'red';
     })
     .finally(() => console.log("Request is finished"));
+
