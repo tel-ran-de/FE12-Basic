@@ -1,0 +1,28 @@
+.table {
+    visibility: hidden;
+}
+
+.input-wrapper {
+    width: 44%;
+    margin: 0 auto;
+    position: relative;
+}
+
+#error {
+    color: #b11010;
+}
+
+button {
+    margin-top: 1em;
+}
+
+table.table {
+    margin-top: 2em;
+}
+
+.text-company {
+    background-color: #e3e5e5;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    color: #6c757d;
+}
