@@ -133,6 +133,7 @@ const gameCycle = function() {
         console.log("Hero caught monster!!!")
         winsOfHero++;
     }
+    monster.update(monster.movingTime());
 
     if (winsOfHero > 0){
         hero.getStarted();
