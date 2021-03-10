@@ -8,6 +8,7 @@ class GameObject {
         if (imageUrl) {
             this.image.src = imageUrl;
         }
+
     }
 
     render(ctx) {
