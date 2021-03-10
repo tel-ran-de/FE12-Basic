@@ -12,12 +12,22 @@
         <div class="input-group-prepend">
             <span class="input-group-text">Please type your text to be converted here</span>
         </div>
-        <textarea id="text-container" class="form-control" aria-label="With textarea"></textarea>
+
+        <textarea id="textForConvert"  class="form-control input" aria-label="With textarea" oninput="handleOnFocus()"></textarea>
+        <div class="invalid-feedback empty">
+            Text is empty - please type text here.
+        </div>
+        <div class="invalid-feedback minvalue">
+            Please type more than 1 word.
+        </div>
     </div>
-    <div class="submit-button">
-        <button type="button" class="btn btn-primary" onclick="onClickHandler()">Click to convert</button>
+    <div class="ui-button">
+    <button type="button" class="btn btn-primary" onclick="convertTextToHex()">Click to convert text to hex</button>
+    <button type="button" class="btn btn-primary" onclick="convertHexToText()">Click to convert hex to text</button>
     </div>
-    <div id="hex-container"> <!-- 32 symbols, you can use functions a.charCodeAt(0), b.toString(16) -->
+    <div id="outputHex"> <!-- 32 symbols, you can use functions a.charCodeAt(0), b.toString(16) -->
+        1A 2B OF 2A 5C
+
     </div>
 
 </body>
