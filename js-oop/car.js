@@ -1,6 +1,6 @@
-function Car(model, literPer100km) {
+function Car(model, kmsPerLiter) {
     this.model = model;
-    this.litersPer100km = literPer100km; //  ---> liter/100km
+    this.kmsPerLiter = kmsPerLiter;
 }
 
 Car.prototype.tank = 0;
@@ -12,17 +12,18 @@ Car.prototype.fill = function (liters) {
 }
 
 Car.prototype.drive = function (distance) {
-    const litersNeededForDistance = (distance * this.litersPer100km) / 100;
+    const distanceToEmptyTank = this.kmsPerLiter * this.tank;
 
-    if (this.tank < litersNeededForDistance) {
-        this.odometer += distance - ((litersNeededForDistance - this.tank) * 100 / this.litersPer100km);
-        console.log('I ran out of fuel at ' + ((litersNeededForDistance - this.tank) * 100 / this.litersPer100km) + ' kms!');
-
+    if (distanceToEmptyTank >= distance) {
+        this.odometer += distance;
+        this.tank -= distance / this.kmsPerLiter;
         return;
     }
-    this.odometer += distance;
-    console.log('I drove ' + distance + ' km');
-    this.tank -= litersNeededForDistance;
+
+    this.tank = 0;
+    this.odometer += distanceToEmptyTank;
+
+    console.log(`I ran out of fuel at ${distanceToEmptyTank} kms!`);
 }
 
 const moskvich = new Car("Moskvich", 5);
