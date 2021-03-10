@@ -1,5 +1,4 @@
 class Monster extends MovableGameObject {
-
     #direction;
     #movingTime;
 
