@@ -128,7 +128,7 @@ window.addEventListener('keyup', (event) => {
 const gameCycle = function() {
     let winsOfHero = 0;
     hero.update();
-
+  
     if (distanceBetweenTwoPoints(hero.x, monster.x, hero.y, monster.y) < hero.image.width / 2 + monster.image.width / 2) {
         console.log("Hero caught monster!!!")
         winsOfHero++;
