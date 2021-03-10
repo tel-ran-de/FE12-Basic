@@ -1,20 +1,19 @@
-function GameObject(imageUrl) {
+function GameObject(imageUrl){
     this.x = 0;
     this.y = 0;
     this.ready = false;
     this.image = new Image();
-    this.image.onload = () => this.ready = true;
-    if (imageUrl) {
+    if (imageUrl){
         this.image.src = imageUrl;
     }
+    this.image.onload = () => this.ready = true;
 }
 
-GameObject.prototype.render = function(ctx) {
+GameObject.prototype.render = function (ctx) {
     if (this.ready) {
         ctx.drawImage(this.image, this.x, this.y);
     }
 }
-const keysPressed = {};
 
 const background = new GameObject('images/background.png');
 const hero = new GameObject('images/hero.png');
@@ -32,67 +31,60 @@ hero.getStarted = function (){
 
 hero.getStarted();
 
-const MovableGameObjectPrototype = {
+const MovebleGameObjectPrototype = {
     speed: 0,
     moveUp: function () {
-        this.y = this.y - this.speed;
-        if (this.y < 0) {
-            this.y = canvas.height - this.y;
-        }
+        this.y = Math.abs(this.y % canvas.height - this.speed)
     },
     moveDown: function () {
         this.y = Math.abs(this.y % canvas.height + this.speed);
     },
     moveLeft: function () {
-        this.x =  this.x - this.speed;
-        if (this.x < 0) {
-            this.x = canvas.width - this.x;
-        }
+        this.x = Math.abs(this.x % canvas.width - this.speed)
     },
     moveRight: function () {
-        this.x = Math.abs(this.x % canvas.width + this.speed);
+        this.x = Math.abs(this.x % canvas.width + this.speed)
     },
-    speedUp: function() {
+    speedUp: function () {
         this.speed += 1;
-        console.log(this.speed);
+        console.log(this.speed)
     },
-    speedDown: function() {
+    speedDown: function () {
         if (this.speed > 1)
             this.speed -= 1;
         console.log(this.speed);
     },
-    updatePosition: function() {
-        if (keysPressed["ArrowUp"]) {
+    updatePosition: function (){
+        if (keyPressed["ArrowUp"]) {
             hero.moveUp();
         }
-        if (keysPressed["ArrowDown"]) {
+        if (keyPressed["ArrowDown"]) {
             hero.moveDown();
         }
-        if (keysPressed["ArrowRight"]) {
+        if (keyPressed["ArrowRight"]) {
             hero.moveRight();
         }
-        if (keysPressed["ArrowLeft"]) {
+        if (keyPressed["ArrowLeft"]) {
             hero.moveLeft();
         }
     },
-    updateSpeed: function () {
-        if (keysPressed["ControlRight"]) {
+    updateSpeed: function (){
+        if (keyPressed["ControlRight"]) {
             hero.speedUp();
         }
-        if (keysPressed["ControlLeft"]) {
+        if (keyPressed["ControlLeft"]) {
             hero.speedDown();
         }
     }
-}
+};
 
-Object.assign(hero, MovableGameObjectPrototype);
+Object.assign(hero, MovebleGameObjectPrototype);
 
-const distanceBetweenTwoPoints = (x1, x2, y1, y2) => Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-
-hero.update = function() {
+hero.update = function () {
     hero.updatePosition();
     hero.updateSpeed();
 }
+
 hero.speed = 1;
 
 monster.move = function (){
@@ -104,16 +96,33 @@ Object.assign(monster, MovableGameObjectPrototype);
 
 monster.move();
 
-const ctx = canvas.getContext('2d');
+const keyPressed = {};
+
 
 window.addEventListener('keydown', (event) => {
-    keysPressed[event.key] = true;
-    keysPressed[event.code] = true;
+    keyPressed[event.key] = true;
+    keyPressed[event.code] = true;
 });
 
+hero.moveUp = function () {
+    hero.y -= hero.speed;
+}
+
+hero.moveDown = function () {
+    hero.y += hero.speed;
+}
+
+hero.moveRight = function () {
+    hero.x += hero.speed;
+}
+
+hero.moveLeft = function () {
+    hero.x -= hero.speed;
+}
+
 window.addEventListener('keyup', (event) => {
-    keysPressed[event.key] = false;
-    keysPressed[event.code] = false;
+    delete keyPressed[event.key];
+    delete keyPressed[event.code];
 });
 
 const gameCycle = function() {
@@ -129,7 +138,6 @@ const gameCycle = function() {
         hero.getStarted();
         monster.move();
     }
-
     background.render(ctx);
     hero.render(ctx);
     monster.render(ctx);
@@ -138,8 +146,5 @@ const gameCycle = function() {
 
 window.requestAnimationFrame(gameCycle);
 
-// setTimeout(() => {
-//     background.render(ctx);
-//     hero.render(ctx);
-//     monster.render(ctx);
-// }, 1500);
+const game = new Game(canvas);
+game.start();

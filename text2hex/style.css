@@ -1,12 +1,12 @@
-div.input-group {
-    min-height: 20em;
-    margin-top: 2em;
+.input-group {
+    margin-top: 20px;
+    margin-bottom: 15px;
 }
 
-.submit-button {
-    margin-top: 1em;
+#textForConvert {
+    height: 150px;
 }
 
-#hex-container {
-    margin-top: 2em;
+#outputHex {
+    margin-top: 20px;
 }
