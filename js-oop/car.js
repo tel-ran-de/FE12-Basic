@@ -8,6 +8,7 @@ Car.prototype.odometer = 0;
 
 Car.prototype.fill = function (liters) {
     this.tank += liters;
+    console.log('I filled ' + liters);
 }
 
 Car.prototype.drive = function (distance) {
@@ -25,23 +26,14 @@ Car.prototype.drive = function (distance) {
     console.log(`I ran out of fuel at ${distanceToEmptyTank} kms!`);
 }
 
-const car = new Car('Volvo', 10);
-
-assertEquals('Volvo', car.model, 'model tested');
-assertEquals(10, car.kmsPerLiter, 'kmsPerLiter tested');
-assertEquals(0, car.tank, 'tank tested');
-assertEquals(0, car.odometer, 'odometer tested');
-
-car.fill(100);
-
-assertEquals(100, car.tank);
-
-car.drive(1000);
-
-assertEquals(1000, car.odometer);
-assertEquals(0, car.tank);
-
-car.fill(10);
-car.drive(1000);
-assertEquals(0, car.tank);
-assertEquals(1100, car.odometer);
+const moskvich = new Car("Moskvich", 5);
+moskvich.fill(50);
+moskvich.drive(900);
+console.log(moskvich.model + ' odometer now: ' + moskvich.odometer);
+console.log('-----------------');
+moskvich.drive(200);
+console.log(moskvich.model + ' odometer now: ' + moskvich.odometer);
+moskvich.fill(100);
+moskvich.drive(50);
+console.log(moskvich.model + ' odometer now: ' + moskvich.odometer);
+console.log(moskvich.model + ' tank now: ' + moskvich.tank);
