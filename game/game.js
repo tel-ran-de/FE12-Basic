@@ -1,5 +1,5 @@
 class Game {
-
+    keysPressed = {};
     canvas;
     monsters = [];
     ctx;
