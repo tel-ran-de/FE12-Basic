@@ -83,6 +83,7 @@ function handleOnFocus() {
 
 function insertIntoTable(dictionaryArray) {
     const element = document.querySelector('table.table tbody');
+
     let toBeInserted = '';
     let i = 1;
     for (const word of dictionaryArray) {
