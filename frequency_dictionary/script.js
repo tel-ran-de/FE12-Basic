@@ -11,11 +11,9 @@ const comparators = {
 
 function generateFrequencyDictionary(str) {
     const dictionary = {};
-
     const wordsArray = wordsStringToArray(str);
 
     console.log(wordsArray);
-
     for (let i = 0; i < wordsArray.length; i++) {
         if (dictionary[wordsArray[i]]) {
             dictionary[wordsArray[i]]++;
