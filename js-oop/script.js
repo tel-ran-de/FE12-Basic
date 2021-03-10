@@ -1,8 +1,3 @@
-// const person = {};
-//
-// person.firstName = 'John';
-// person['lastName'] = 'Smith';
-
 function bio() {
 
 }
@@ -59,11 +54,36 @@ const person1 = new Person('Vasya', 'Pupkin', 'male');
 const person2 = new Person('Jack', 'Russel', 'terrier');
 const person3 = new Person('Alexander', 'Pushkin', 'male');
 
-//person3.address = new Address('river Moyka','12', 'St Petersburg', 'Russia', '191186');
+Person.prototype.greetOtherPerson = function(person) {
+    return person.bio() + ' greets me ' + this.bio()
+}
 
-person3.address['street'] = 'river Moyka';
-person3.address['zip'] = '191186';
-person3.address['country'] = 'Russia';
-person3.address['houseNumber'] = '12';
+function Address(street, houseNumber, city, country, zip) {
+    this.street = street;
+    this.houseNumber = houseNumber;
+    this.city = city;
+    this.country = country;
+    this.zip = zip;
+}
 
-console.log(person3.sayAddress(person3));
+Person.prototype.address = new Address();
+
+Person.prototype.sayAddress = function() {
+    return this.address.houseNumber + ' ' + this.address.street + ', '
+            + this.address.city + ', ' + this.address.country + ', '
+            + this.address.zip;
+}
+
+const pushkin = new Person("Alexander", "Pushkin", "male");
+console.log(pushkin.sayAddress());
+
+pushkin.address.street = 'embankment river Moyka';
+pushkin.address.houseNumber = '12';
+pushkin.address.city = 'St Petersburg';
+pushkin.address.country = 'Russia';
+pushkin.address.zip = '191186';
+
+//Also possible
+//pushkin.address = new Address('embankment river Moyka','12', 'St Petersburg', 'Russia', '191186');
+
+console.log(pushkin.sayAddress());
