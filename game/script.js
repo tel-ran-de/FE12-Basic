@@ -61,3 +61,6 @@ window.requestAnimationFrame(gameCycle);
 //     monster.render(ctx)},
 //     1500
 // );
+
+const game = new Game(canvas);
+game.start();

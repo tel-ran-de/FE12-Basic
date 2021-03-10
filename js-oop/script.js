@@ -1,8 +1,3 @@
-// const person = {};
-//
-// person.firstName = 'John';
-// person['lastName'] = 'Smith';
-
 function bio() {
 
 }
@@ -11,30 +6,13 @@ const person = {
     firstName: 'John',
     lastName: 'Smith',
     gender: 'male',
-    bio: function() {
+    bio: function () {
         return this.firstName + ' ' + this.lastName + ' ' + this.gender;
     },
-    greeting: function() {
+    greeting: function () {
         console.log("Hello, " + this.bio())
     }
 }
-
-// function Person(firstName, lastName, gender) {
-//     const person = {};
-//     person.firstName = firstName;
-//     person.lastName = lastName;
-//     person.gender = gender;
-//     person.bio = function() {
-//         return person.firstName + ' ' + person.lastName + ' ' + person.gender;
-//     };
-//     person.greeting = function() {
-//         return "Hello, " + person.bio()
-//     };
-//     return person;
-// }
-//
-// const person1 = Person('Vasya', 'Pupkin', 'male');
-// const person2 = Person('Jack', 'Russel', 'terrier');
 
 function Person(firstName, lastName, gender) {
     this.firstName = firstName;
@@ -42,15 +20,39 @@ function Person(firstName, lastName, gender) {
     this.gender = gender;
 }
 
-Person.prototype.bio = function() {
+function Address(street, houseNumber, city, country, zip) {
+    this.street = street;
+    this.houseNumber = houseNumber;
+    this.city = city;
+    this.country = country;
+    this.zip = zip;
+}
+
+Person.prototype.address = new Address();
+
+Person.prototype.bio = function () {
     return this.firstName + ' ' + this.lastName + ' ' + this.gender;
 }
-Person.prototype.greeting = function() {
+Person.prototype.greeting = function () {
     return 'Hello, ' + this.bio();
+}
+
+Person.prototype.greetOtherPerson = function (person) {
+    return person.bio() + ' greets me ' + this.bio()
+}
+
+Address.prototype.getAddress = function (){
+    return this.zip + ', ' + this.country + ', ' +
+        this.city + ', ' + this.street + ', ' + this.houseNumber;
+}
+
+Person.prototype.sayAddress = function (){
+    return 'address is ' + this.address.getAddress();
 }
 
 const person1 = new Person('Vasya', 'Pupkin', 'male');
 const person2 = new Person('Jack', 'Russel', 'terrier');
+const person3 = new Person('Alexander', 'Pushkin', 'male');
 
 Person.prototype.greetOtherPerson = function(person) {
     return person.bio() + ' greets me ' + this.bio()
