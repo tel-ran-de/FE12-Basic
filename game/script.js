@@ -1,15 +1,16 @@
-function GameObject(imageUrl) {
+function GameObject(imageUrl){
     this.x = 0;
     this.y = 0;
     this.ready = false;
     this.image = new Image();
-    this.image.onload = () => this.ready = true;
-    if (imageUrl) {
+    if (imageUrl){
         this.image.src = imageUrl;
     }
+    this.image.onload = () => this.ready = true;
 }
 
 GameObject.prototype.render = function (ctx) {
+
     if (this.ready) {
         ctx.drawImage(this.image, this.x, this.y);
     }
@@ -33,8 +34,12 @@ monster.y = monster.image.height + (Math.random() * (canvas.height*0.9 - monster
 
 const ctx = canvas.getContext('2d');
 
-window.addEventListener('keydown', (event) => {
+ctx.drawImage(background.image, 0, 0);
+//background.image.onload = () => ctx.drawImage(background.image, 0, 0);
+
+window.addEventListener('keydown', (event) =>{
     console.log(event);
+
     if (event.key === "ArrowUp") {
         hero.moveUp();
     }
@@ -91,5 +96,9 @@ window.requestAnimationFrame(gameCycle);
 // setTimeout(() => {
 //     background.render(ctx);
 //     hero.render(ctx);
-//     monster.render(ctx);
-// }, 1500);
+//     monster.render(ctx)},
+//     1500
+// );
+
+const game = new Game(canvas);
+game.start();
