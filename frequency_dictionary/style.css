@@ -1,0 +1,11 @@
+button {
+    margin-top: 1em;
+}
+
+table.table {
+    margin-top: 2em;
+}
+
+.input-group textarea {
+    height: 20em;
+}
