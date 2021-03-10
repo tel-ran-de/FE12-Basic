@@ -1,13 +1,12 @@
-function GameObject(imageUrl) {
+function GameObject(imageUrl){
     this.x = 0;
     this.y = 0;
-    this.speed = 1;
     this.ready = false;
     this.image = new Image();
-    this.image.onload = () => this.ready = true;
-    if (imageUrl) {
+    if (imageUrl){
         this.image.src = imageUrl;
     }
+    this.image.onload = () => this.ready = true;
 }
 
 GameObject.prototype.render = function (ctx) {
@@ -27,6 +26,7 @@ document.body.appendChild(canvas);
 
 hero.x = canvas.width / 2;
 hero.y = canvas.height / 2;
+hero.speed = 1;
 
 const MovebleGameObjectPrototype = {
     speed: 0,
@@ -96,6 +96,22 @@ window.addEventListener('keydown', (event) => {
     keyPressed[event.code] = true;
 });
 
+hero.moveUp = function () {
+    hero.y -= hero.speed;
+}
+
+hero.moveDown = function () {
+    hero.y += hero.speed;
+}
+
+hero.moveRight = function () {
+    hero.x += hero.speed;
+}
+
+hero.moveLeft = function () {
+    hero.x -= hero.speed;
+}
+
 window.addEventListener('keyup', (event) => {
     delete keyPressed[event.key];
     delete keyPressed[event.code];
@@ -111,8 +127,5 @@ const gameCycle = function () {
 
 window.requestAnimationFrame(gameCycle);
 
-// setTimeout(() => {
-//     background.render(ctx);
-//     hero.render(ctx);
-//     monster.render(ctx);
-// }, 1500);
+const game = new Game(canvas);
+game.start();
