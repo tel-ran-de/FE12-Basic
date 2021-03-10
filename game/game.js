@@ -6,6 +6,8 @@ class Game {
     before;
     now;
 
+    keysPressed = {};
+
     constructor(canvas, numberOfMonsters = 5) {
         this.canvas = canvas;
         this.ctx = this.canvas.getContext('2d');
@@ -27,7 +29,6 @@ class Game {
             this.keysPressed[event.key] = false;
             this.keysPressed[event.code] = false;
         });
-
     }
 
     start() {
