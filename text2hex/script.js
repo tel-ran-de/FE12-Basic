@@ -1,53 +1,32 @@
-function convertTextToHex() {
-    const textInput = getTextFromForm();
-    let hex = '';
-    let counter = 0;
-    if (textInput !== undefined) {
-        for (let i = 0; i < textInput.length; i++) {
-            hex += ' ' + textInput.charCodeAt(i).toString(16);
-            counter++;
-            if (counter > 32) {
-                hex += '<br>';
-                counter = 0;
-            }
+function onClickHandler() {
+    const text = document.getElementById('text-container').value;
+    console.log(text);
+    const hex = convertToHex(text);
+    console.log(hex);
+    insertIntoHexContainer(hex);
+}
+
+function convertToHex(text) {
+    const hex = [];
+    for (let i = 0; i < text.length; i++) {
+        hex[i] = text.charCodeAt(i).toString(16);
+    }
+    return hex;
+}
+
+function insertIntoHexContainer(hex) {
+    const hexContainer = document.getElementById('hex-container');
+    let hexText = '';
+    for (let i = 0; i < hex.length; i++) {
+        if (i !== 0 && i % 32 === 0) {
+            hexText += '<br>';
         }
-        insertToTheForm(hex);
-    }
-}
 
-function insertToTheForm(text) {
-    const element = document.getElementById('outputHex');
-    element.innerHTML = text;
-}
+        hexText += hex[i];
 
-function convertHexToText() {
-    let hexInput = getTextFromForm();
-    let text = '';
-    if (hexInput !== undefined) {
-        const array = hexInput.split(' ');
-        for (let i = 0; i < array.length; i++) {
-            let letter = String.fromCharCode(parseInt(array[i], 16));
-            text += ' ' + letter;
+        if ((i + 1) % 32 !== 0 && (i + 1) !== hex.length) {
+            hexText += ' ';
         }
-        insertToTheForm(text);
     }
-}
-
-function handleOnFocus() {
-    for (const element of document.querySelectorAll('.input-group div.invalid-feedback')) {
-        element.style.display = 'none';
-    }
-}
-
-function getTextFromForm() {
-    let text = document.getElementById('textForConvert').value;
-    if (text === '') {
-        document.querySelector('.input-group div.invalid-feedback.empty').style.display = 'block';
-        return;
-    }
-    if (text.split(' ').length < 2) {
-        document.querySelector('.input-group div.invalid-feedback.minvalue').style.display = 'block';
-        return;
-    }
-    return text;
+    hexContainer.innerHTML = hexText;
 }
