@@ -10,7 +10,6 @@ function GameObject(imageUrl){
 }
 
 GameObject.prototype.render = function (ctx) {
-
     if (this.ready) {
         ctx.drawImage(this.image, this.x, this.y);
     }
@@ -29,39 +28,72 @@ hero.x = canvas.width / 2;
 hero.y = canvas.height / 2;
 hero.speed = 1;
 
-monster.x = monster.image.width + (Math.random() * (canvas.width*0.9 - monster.image.width * 2)); // not to appear in bush
-monster.y = monster.image.height + (Math.random() * (canvas.height*0.9 - monster.image.height * 2)); // not to appear in bush
+const MovebleGameObjectPrototype = {
+    speed: 0,
+    moveUp: function () {
+        this.y = Math.abs(this.y % canvas.height - this.speed)
+    },
+    moveDown: function () {
+        this.y = Math.abs(this.y % canvas.height + this.speed);
+    },
+    moveLeft: function () {
+        this.x = Math.abs(this.x % canvas.width - this.speed)
+    },
+    moveRight: function () {
+        this.x = Math.abs(this.x % canvas.width + this.speed)
+    },
+    speedUp: function () {
+        this.speed += 1;
+        console.log(this.speed)
+    },
+    speedDown: function () {
+        if (this.speed > 1)
+            this.speed -= 1;
+        console.log(this.speed);
+    },
+    updatePosition: function (){
+        if (keyPressed["ArrowUp"]) {
+            hero.moveUp();
+        }
+        if (keyPressed["ArrowDown"]) {
+            hero.moveDown();
+        }
+        if (keyPressed["ArrowRight"]) {
+            hero.moveRight();
+        }
+        if (keyPressed["ArrowLeft"]) {
+            hero.moveLeft();
+        }
+    },
+    updateSpeed: function (){
+        if (keyPressed["ControlRight"]) {
+            hero.speedUp();
+        }
+        if (keyPressed["ControlLeft"]) {
+            hero.speedDown();
+        }
+    }
+};
+
+Object.assign(hero, MovebleGameObjectPrototype);
+
+hero.update = function () {
+    hero.updatePosition();
+    hero.updateSpeed();
+}
+
+hero.speed = 1;
+
+monster.x = monster.image.width + Math.random() * (canvas.width - 3 * monster.image.width);
+monster.y = monster.image.height + Math.random() * (canvas.height - 3 * monster.image.height);
 
 const ctx = canvas.getContext('2d');
 
-ctx.drawImage(background.image, 0, 0);
-//background.image.onload = () => ctx.drawImage(background.image, 0, 0);
+const keyPressed = {};
 
-window.addEventListener('keydown', (event) =>{
-    console.log(event);
-
-    if (event.key === "ArrowUp") {
-        hero.moveUp();
-    }
-    if (event.key === "ArrowDown") {
-        hero.moveDown();
-    }
-    if (event.key === "ArrowRight") {
-        hero.moveRight();
-    }
-    if (event.key === "ArrowLeft") {
-        hero.moveLeft();
-    }
-    if (event.key === "ControlLeft") {
-        if (hero.speed > 0) {      //doesn't works
-            hero.speed *= 20;
-        }
-    }
-    if (event.key === "ControlRight") {
-        if (hero.speed > 0) {      //doesn't works
-            hero.speed /= 20;
-        }
-    }
+window.addEventListener('keydown', (event) => {
+    keyPressed[event.key] = true;
+    keyPressed[event.code] = true;
 });
 
 hero.moveUp = function () {
@@ -81,10 +113,12 @@ hero.moveLeft = function () {
 }
 
 window.addEventListener('keyup', (event) => {
-    console.log(event);
+    delete keyPressed[event.key];
+    delete keyPressed[event.code];
 });
 
 const gameCycle = function () {
+    hero.update();
     background.render(ctx);
     hero.render(ctx);
     monster.render(ctx);
@@ -92,13 +126,6 @@ const gameCycle = function () {
 }
 
 window.requestAnimationFrame(gameCycle);
-
-// setTimeout(() => {
-//     background.render(ctx);
-//     hero.render(ctx);
-//     monster.render(ctx)},
-//     1500
-// );
 
 const game = new Game(canvas);
 game.start();
