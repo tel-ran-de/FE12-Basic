@@ -2,8 +2,10 @@ button {
     margin-top: 1em;
 }
 
-/*
-.invalid-feedback {
-    display: block;
+table.table {
+    margin-top: 2em;
 }
-*/
+
+.input-group textarea {
+    height: 20em;
+}
